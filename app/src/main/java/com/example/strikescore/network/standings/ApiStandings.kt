@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ApiResponsetest(
-    val standings: List<ApiResponseStandings>
+data class ApiResponseStandings(
+    val standings: List<ApiResponseTable>
 )
 
 @Serializable
-data class ApiResponseStandings(
+data class ApiResponseTable(
     val table: List<ApiStandings>
 )
 @Serializable

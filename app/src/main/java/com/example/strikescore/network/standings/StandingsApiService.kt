@@ -9,7 +9,7 @@ import retrofit2.http.GET
 interface StandingsApiService {
     // suspend is added to force the user to call this in a coroutine scope
     @GET("standings")
-    suspend fun getStandings(): ApiResponsetest
+    suspend fun getStandings(): ApiResponseStandings
 }
 
 // helper function
