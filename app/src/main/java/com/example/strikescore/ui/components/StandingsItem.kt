@@ -2,6 +2,7 @@ package com.example.strikescore.ui.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
@@ -28,7 +30,7 @@ import com.example.strikescore.model.Standings
 @Composable
 fun StandingsItem(
     modifier: Modifier = Modifier,
-    standing : Standings
+    standing: Standings
 ) {
 
     val imgLoader = ImageLoader.Builder(LocalContext.current).components {
@@ -36,32 +38,94 @@ fun StandingsItem(
     }.build()
 
     Card(
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-        ),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        shape = RectangleShape,
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
-            .shadow(8.dp, shape = RoundedCornerShape(8.dp)),
+
     ) {
         Row(
             modifier = Modifier
+                .fillMaxWidth()
                 .animateContentSize()
                 .padding(16.dp),
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = standing.position.toString(),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
-            Text(
-                text = standing.team.name,
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
+            Row(
+                modifier = Modifier
+                    .animateContentSize()
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ){
+                Text(
+                    text = standing.position.toString(),
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+
+                //add spacer
+                Spacer(
+                    modifier = Modifier.size(16.dp)
+                )
+
+                AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current).data(standing.team.crest).crossfade(true).build(),
+                        contentDescription = "crest",
+                        imageLoader = imgLoader,
+                        modifier = Modifier
+                            .size(50.dp)
+                            .padding(8.dp),
+                    )
+
+                //add spacer
+                Spacer(
+                    modifier = Modifier.size(8.dp)
+                )
+
+                    Text(
+                        text = standing.team.name,
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+            }
+
+
+
+
+                Text(
+                    modifier = Modifier
+                        .padding(8.dp),
+                    text = standing.points.toString(),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Right,
+                )
+//            Text(text = standing.playedGames.toString())
+//            Text(text = standing.won.toString())
+//            Text(text = standing.draw.toString())
+//            Text(text = standing.lost.toString())
+//            Text(text = standing.goalsFor.toString())
+//            Text(text = standing.goalsAgainst.toString())
+//            Text(text = standing.goalDifference.toString())
 
         }
     }
 }
+
+// The Standings data class should look something like this:
+data class Standings(
+    val position: Int,
+    val team: Team,
+    val gamesPlayed: Int,
+    val points: Int,
+    val wins: Int,
+    val draws: Int,
+    val losses: Int,
+    val goalsFor: Int,
+    val goalsAgainst: Int,
+    val goalDifference: Int
+)
+
+data class Team(
+    val name: String
+    // ... include other team-related data if necessary
+)
