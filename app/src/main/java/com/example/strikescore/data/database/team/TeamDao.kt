@@ -1,4 +1,4 @@
-package com.example.strikescore.data.database
+package com.example.strikescore.data.database.team
 
 import androidx.room.Dao
 import androidx.room.Delete

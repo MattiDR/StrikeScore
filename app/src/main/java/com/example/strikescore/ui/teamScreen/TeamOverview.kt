@@ -70,7 +70,7 @@ fun TaskListComponent(modifier: Modifier = Modifier, teamOverviewState: TeamOver
 @Composable
 fun TeamListComponentPreview() {
     TaskListComponent(teamOverviewState = TeamOverviewState(), teamListState = TeamListState(listOf(
-        Team("previewteam", "pre", "crest", "address", "website", "clubColors", "venue")
+        Team("previewteam", "pre", "crest")
     ))
     )
 }

@@ -1,6 +1,5 @@
 package com.example.strikescore.data
 
-
 import android.content.Context
 import android.util.Log
 import androidx.work.Constraints
@@ -8,14 +7,13 @@ import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import com.example.strikescore.data.database.team.TeamDao
-import com.example.strikescore.data.database.team.asDbTeam
-import com.example.strikescore.data.database.team.asDomainTeams
-import com.example.strikescore.data.database.team.asDomainTeam
-import com.example.strikescore.model.Team
-import com.example.strikescore.network.team.TeamApiService
-import com.example.strikescore.network.team.asDomainObjects
-import com.example.strikescore.network.team.getTasksAsFlow
+import com.example.strikescore.data.database.standings.StandingsDao
+import com.example.strikescore.data.database.standings.asDbStandings
+import com.example.strikescore.data.database.standings.asDomainStandings
+import com.example.strikescore.model.Standings
+import com.example.strikescore.network.standings.StandingsApiService
+import com.example.strikescore.network.standings.asDomainObjects
+import com.example.strikescore.network.standings.getStandingsAsFlow
 import com.example.strikescore.workerUtils.WifiNotificationWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -23,29 +21,31 @@ import kotlinx.coroutines.flow.onEach
 import java.net.SocketTimeoutException
 import java.util.UUID
 
-interface TeamRepository {
+interface StandingsRepository {
+
     // all items from datasource
-    fun getTeams(): Flow<List<Team>>
+    fun getStandings(): Flow<List<Standings>>
 
     // one specific item
-    fun getTeam(id: String): Flow<Team?>
+    fun getStandings(id: Int): Flow<Standings?>
 
-    suspend fun insertTeam(team: Team)
+    suspend fun insertStandings(standings: Standings)
 
-    suspend fun deleteTeam(team: Team)
+    suspend fun deleteStandings(standings: Standings)
 
-    suspend fun updateTeam(team: Team)
+    suspend fun updateStandings(standings: Standings)
 
     suspend fun refresh()
 
     var wifiWorkInfo: Flow<WorkInfo>
+
 }
 
-class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiService: TeamApiService, context: Context) : TeamRepository {
+class CachingStandingsRepository(private val standingsDao: StandingsDao, private val standingsApiService: StandingsApiService, context: Context) : StandingsRepository {
 
     // this repo contains logic to refresh the tasks (remote)
     // sometimes that logic is written in a 'usecase'
-    override fun getTeams(): Flow<List<Team>> {
+    override fun getStandings(): Flow<List<Standings>> {
         // checkes the array of items comming in
         // when empty --> tries to fetch from API
         // clear the DB if inspector is broken...
@@ -53,8 +53,8 @@ class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiSe
             for(t: dbTask in it)
                 taskDao.delete(t)
         } }*/
-        return teamDao.getAllItems().map {
-            it.asDomainTeams()
+        return standingsDao.getAllItems().map {
+            it.asDomainStandings()
         }.onEach {
             // todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
@@ -63,27 +63,29 @@ class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiSe
         }
     }
 
-    override fun getTeam(name: String): Flow<Team?> {
-        return teamDao.getItem(name).map {
-            it.asDomainTeam()
+    override fun getStandings(position: Int): Flow<Standings?> {
+        return standingsDao.getItem(position).map {
+            it.asDomainStandings()
         }
     }
 
-    override suspend fun insertTeam(team: Team) {
-        teamDao.insert(team.asDbTeam())
+    override suspend fun insertStandings(standings: Standings) {
+        standingsDao.insert(standings.asDbStandings())
     }
 
-    override suspend fun deleteTeam(team: Team) {
-        teamDao.delete(team.asDbTeam())
+    override suspend fun deleteStandings(standings: Standings) {
+        standingsDao.delete(standings.asDbStandings())
     }
 
-    override suspend fun updateTeam(team: Team) {
-        teamDao.update(team.asDbTeam())
+    override suspend fun updateStandings(standings: Standings) {
+        standingsDao.update(standings.asDbStandings())
     }
 
-    private var workID = UUID(1,2)
+    private var workID = UUID(1, 2)
+
     //the manager is private to the repository
     private val workManager = WorkManager.getInstance(context)
+
     //the info function is public
     override var wifiWorkInfo: Flow<WorkInfo> =
         workManager.getWorkInfoByIdFlow(workID)
@@ -91,7 +93,8 @@ class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiSe
     override suspend fun refresh() {
         //refresh is used to schedule the workrequest
 
-        val constraints = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+        val constraints =
+            Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
 
         val requestBuilder = OneTimeWorkRequestBuilder<WifiNotificationWorker>()
         val request = requestBuilder.setConstraints(constraints).build()
@@ -100,14 +103,12 @@ class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiSe
         wifiWorkInfo = workManager.getWorkInfoByIdFlow(request.id)
 
 
-
         //note the actual api request still uses coroutines
         try {
-            teamApiService.getTasksAsFlow().asDomainObjects().collect {
-                    value ->
-                for (team in value) {
+            standingsApiService.getStandingsAsFlow().asDomainObjects().collect { value ->
+                for (standing in value) {
                     Log.i("TEST", "refresh: $value")
-                    insertTeam(team)
+                    insertStandings(standing)
                 }
             }
         } catch (e: SocketTimeoutException) {

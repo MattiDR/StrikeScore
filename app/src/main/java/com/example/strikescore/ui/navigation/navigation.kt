@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.strikescore.ui.matchScreen.MatchScreen
-import com.example.strikescore.ui.standingsScreen.StandingsScreen
+import com.example.strikescore.ui.standingsScreen.StandingsOverview
 import com.example.strikescore.ui.teamScreen.TeamOverview
 
 @Composable
@@ -26,7 +26,7 @@ fun navComponent(
             MatchScreen()
         }
         composable(route = StrikeScoreOverviewScreen.Standings.name) {
-            StandingsScreen()
+            StandingsOverview()
         }
     }
 }

@@ -1,9 +1,10 @@
 package com.example.strikescore.data
 
 import android.content.Context
-import com.example.strikescore.data.database.TeamDb
+import com.example.strikescore.data.database.StrikeScoreDb
 import com.example.strikescore.network.NetworkConnectionInterceptor
-import com.example.strikescore.network.TeamApiService
+import com.example.strikescore.network.standings.StandingsApiService
+import com.example.strikescore.network.team.TeamApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -12,6 +13,7 @@ import retrofit2.Retrofit
 
 interface AppContainer {
     val teamsRepository: TeamRepository
+    val standingsRepository: StandingsRepository
 }
 
 // container that takes care of dependencies
@@ -32,8 +34,11 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         .client(client)
         .build()
 
-    private val retrofitService: TeamApiService by lazy {
+    private val retrofitTeamService: TeamApiService by lazy {
         retrofit.create(TeamApiService::class.java)
+    }
+    private val retrofitStandingsService: StandingsApiService by lazy {
+        retrofit.create(StandingsApiService::class.java)
     }
 
     /*
@@ -42,6 +47,10 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
     }
     */
     override val teamsRepository: TeamRepository by lazy {
-        CachingTeamsRepository(TeamDb.getDatabase(context = context).teamDao(), retrofitService, context)
+        CachingTeamsRepository(StrikeScoreDb.getDatabase(context = context).teamDao(), retrofitTeamService, context)
+    }
+
+    override val standingsRepository: StandingsRepository by lazy {
+        CachingStandingsRepository(StrikeScoreDb.getDatabase(context = context).standingsDao(), retrofitStandingsService, context)
     }
 }

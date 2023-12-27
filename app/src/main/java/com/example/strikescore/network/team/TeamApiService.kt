@@ -1,4 +1,4 @@
-package com.example.strikescore.network
+package com.example.strikescore.network.team
 
 import android.util.Log
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ import retrofit2.http.GET
 interface TeamApiService {
     // suspend is added to force the user to call this in a coroutine scope
     @GET("teams")
-    suspend fun getTasks(): ApiResponse
+    suspend fun getTasks(): ApiResponseTeams
 }
 
 // helper function
