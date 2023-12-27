@@ -1,4 +1,4 @@
-package com.example.strikescore.data.database
+package com.example.strikescore.data
 
 
 import android.content.Context
@@ -8,7 +8,16 @@ import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
+import com.example.strikescore.data.database.TeamDao
+import com.example.strikescore.data.database.asDbTeam
+import com.example.strikescore.data.database.asDomainTeams
+import com.example.strikescore.data.database.asDomainTeam
+import com.example.strikescore.data.database.asDomainTeam
 import com.example.strikescore.model.Team
+import com.example.strikescore.network.TeamApiService
+import com.example.strikescore.network.asDomainObjects
+import com.example.strikescore.network.getTasksAsFlow
+import com.example.strikescore.workerUtils.WifiNotificationWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -17,27 +26,27 @@ import java.util.UUID
 
 interface TeamRepository {
     // all items from datasource
-    fun getTasks(): Flow<List<Team>>
+    fun getTeams(): Flow<List<Team>>
 
     // one specific item
-    fun getTask(id: String): Flow<Team?>
+    fun getTeam(id: String): Flow<Team?>
 
-    suspend fun insertTask(task: Team)
+    suspend fun insertTeam(team: Team)
 
-    suspend fun deleteTask(task: Team)
+    suspend fun deleteTeam(team: Team)
 
-    suspend fun updateTask(task: Team)
+    suspend fun updateTeam(team: Team)
 
     suspend fun refresh()
 
     var wifiWorkInfo: Flow<WorkInfo>
 }
 
-class CachingTasksRepository(private val taskDao: TaskDao, private val taskApiService: TaskApiService, context: Context) : TasksRepository {
+class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiService: TeamApiService, context: Context) : TeamRepository {
 
     // this repo contains logic to refresh the tasks (remote)
     // sometimes that logic is written in a 'usecase'
-    override fun getTasks(): Flow<List<Task>> {
+    override fun getTeams(): Flow<List<Team>> {
         // checkes the array of items comming in
         // when empty --> tries to fetch from API
         // clear the DB if inspector is broken...
@@ -45,8 +54,8 @@ class CachingTasksRepository(private val taskDao: TaskDao, private val taskApiSe
             for(t: dbTask in it)
                 taskDao.delete(t)
         } }*/
-        return taskDao.getAllItems().map {
-            it.asDomainTasks()
+        return teamDao.getAllItems().map {
+            it.asDomainTeams()
         }.onEach {
             // todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
@@ -55,22 +64,22 @@ class CachingTasksRepository(private val taskDao: TaskDao, private val taskApiSe
         }
     }
 
-    override fun getTask(name: String): Flow<Task?> {
-        return taskDao.getItem(name).map {
-            it.asDomainTask()
+    override fun getTeam(name: String): Flow<Team?> {
+        return teamDao.getItem(name).map {
+            it.asDomainTeam()
         }
     }
 
-    override suspend fun insertTask(task: Task) {
-        taskDao.insert(task.asDbTask())
+    override suspend fun insertTeam(team: Team) {
+        teamDao.insert(team.asDbTeam())
     }
 
-    override suspend fun deleteTask(task: Task) {
-        taskDao.delete(task.asDbTask())
+    override suspend fun deleteTeam(team: Team) {
+        teamDao.delete(team.asDbTeam())
     }
 
-    override suspend fun updateTask(task: Task) {
-        taskDao.update(task.asDbTask())
+    override suspend fun updateTeam(team: Team) {
+        teamDao.update(team.asDbTeam())
     }
 
     private var workID = UUID(1,2)
@@ -95,11 +104,11 @@ class CachingTasksRepository(private val taskDao: TaskDao, private val taskApiSe
 
         //note the actual api request still uses coroutines
         try {
-            taskApiService.getTasksAsFlow().asDomainObjects().collect {
+            teamApiService.getTasksAsFlow().asDomainObjects().collect {
                     value ->
-                for (task in value) {
+                for (team in value) {
                     Log.i("TEST", "refresh: $value")
-                    insertTask(task)
+                    insertTeam(team)
                 }
             }
         } catch (e: SocketTimeoutException) {

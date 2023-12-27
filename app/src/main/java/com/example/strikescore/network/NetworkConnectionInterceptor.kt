@@ -16,7 +16,7 @@ class NetworkConnectionInterceptor(val context: Context) : Interceptor {
 
         }
         else {
-            val builder = chain.request().newBuilder()
+            val builder = chain.request().newBuilder().addHeader("X-Auth-Token", "560af3c655694c00a6d973c6012abc31")
             return@run chain.proceed(builder.build())
         }
 

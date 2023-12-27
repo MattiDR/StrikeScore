@@ -1,6 +1,9 @@
-package com.example.strikescore.data.database
+package com.example.strikescore.data
 
 import android.content.Context
+import com.example.strikescore.data.database.TeamDb
+import com.example.strikescore.network.NetworkConnectionInterceptor
+import com.example.strikescore.network.TeamApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -8,7 +11,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
 interface AppContainer {
-    val tasksRepository: TasksRepository
+    val teamsRepository: TeamRepository
 }
 
 // container that takes care of dependencies
@@ -20,17 +23,17 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         .build()
 
 
-    private val baseUrl = "http://10.0.2.2:3000"
+    private val baseUrl = "https://api.football-data.org/v4/competitions/PL/"
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(
-            Json.asConverterFactory("application/json".toMediaType()),
+            Json { ignoreUnknownKeys = true}.asConverterFactory("application/json".toMediaType()),
         )
         .baseUrl(baseUrl)
         .client(client)
         .build()
 
-    private val retrofitService: TaskApiService by lazy {
-        retrofit.create(TaskApiService::class.java)
+    private val retrofitService: TeamApiService by lazy {
+        retrofit.create(TeamApiService::class.java)
     }
 
     /*
@@ -38,7 +41,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         ApiTasksRepository(retrofitService)
     }
     */
-    override val tasksRepository: TasksRepository by lazy {
-        CachingTasksRepository(TaskDb.getDatabase(context = context).taskDao(), retrofitService, context)
+    override val teamsRepository: TeamRepository by lazy {
+        CachingTeamsRepository(TeamDb.getDatabase(context = context).teamDao(), retrofitService, context)
     }
 }

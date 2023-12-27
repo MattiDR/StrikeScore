@@ -15,13 +15,13 @@ import retrofit2.http.GET
 interface TeamApiService {
     // suspend is added to force the user to call this in a coroutine scope
     @GET("teams")
-    suspend fun getTasks(): List<ApiTeam>
+    suspend fun getTasks(): ApiResponse
 }
 
 // helper function
 fun TeamApiService.getTasksAsFlow(): Flow<List<ApiTeam>> = flow {
     try {
-        emit(getTasks())
+        emit(getTasks().teams)
     }
     catch(e: Exception){
         Log.e("API", "getTasksAsFlow: "+e.stackTraceToString(), )

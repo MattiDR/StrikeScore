@@ -6,13 +6,16 @@ import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
 
 @Serializable
+data class ApiResponse(
+    val teams: List<ApiTeam>
+)
+@Serializable
 data class ApiTeam(
     val name: String,
     val tla: String,
     val crest: String,
     val address: String,
     val website: String,
-    val founded: Int,
     val clubColors: String,
     val venue: String,
 )
@@ -26,7 +29,7 @@ fun Flow<List<ApiTeam>>.asDomainObjects(): Flow<List<Team>> {
 
 fun List<ApiTeam>.asDomainObjects(): List<Team> {
     var domainList = this.map {
-        Team(it.name, it.tla, it.crest, it.address, it.website, it.founded, it.clubColors, it.venue)
+        Team(it.name, it.tla, it.crest, it.address, it.website, it.clubColors, it.venue)
     }
     return domainList
 }
