@@ -11,6 +11,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import com.example.strikescore.ui.util.StrikeScoreNavigationType
 import com.example.strikescore.ui.StrikeScoreApp
+import com.example.strikescore.ui.theme.backgroundTeamItem
 
 data class BottomNavigationItem(
     val title: String,
@@ -26,7 +27,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             StrikeScoreTheme {
-                Surface{
+                Surface(
+                    color = backgroundTeamItem,
+                ){
                     val windowSize = calculateWindowSizeClass(activity = this)
                     when (windowSize.widthSizeClass){
                         WindowWidthSizeClass.Compact -> {

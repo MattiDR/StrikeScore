@@ -13,3 +13,5 @@ val Pink40 = Color(0xFF7D5260)
 val backgroundBottomNavigationBar = Color(0xFF85b034)
 val backgroundTopBar = Color(0xFF85b034)
 val backgroundSelectedBottomNavigationBar = Color(0xFF5f7d25)
+
+val backgroundTeamItem = Color(0xFFDCECBF)
