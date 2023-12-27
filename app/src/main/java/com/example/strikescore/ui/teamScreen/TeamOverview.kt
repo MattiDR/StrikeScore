@@ -33,10 +33,10 @@ fun TeamOverview(
     //use the workerstate
     val workerState by teamOverviewViewModel.wifiWorkerState.collectAsState()
     Column {
-        when(workerState.workerInfo?.state){
-            null -> Text("state unknown")
-            else -> Text(workerState.workerInfo?.state!!.name)
-        }
+//        when(workerState.workerInfo?.state){
+//            null -> Text("state unknown")
+//            else -> Text(workerState.workerInfo?.state!!.name)
+//        }
 
         Box(modifier = modifier) {
             when (teamApiState) {
@@ -52,7 +52,7 @@ fun TaskListComponent(modifier: Modifier = Modifier, teamOverviewState: TeamOver
     val lazyListState = rememberLazyListState()
     LazyColumn(state = lazyListState) {
         items(teamListState.teamList.size) {
-            TeamItem(name = teamListState.teamList[it].name)
+            TeamItem(name = teamListState.teamList[it].name, crest = teamListState.teamList[it].crest)
         }
     }
     val coroutineScope = rememberCoroutineScope()

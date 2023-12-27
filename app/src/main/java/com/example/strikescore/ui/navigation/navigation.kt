@@ -16,7 +16,7 @@ fun navComponent(
 ) {
     NavHost(
         navController = navController,
-        startDestination = StrikeScoreOverviewScreen.Matches.name,
+        startDestination = StrikeScoreOverviewScreen.Teams.name,
         modifier = modifier,
     ) {
         composable(route = StrikeScoreOverviewScreen.Teams.name) {
