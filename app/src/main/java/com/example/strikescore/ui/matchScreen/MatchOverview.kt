@@ -125,7 +125,8 @@ fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchO
         }
     } else {
         // Display "No matches" message when there are no matches
-        Text("No matches for this day", modifier = Modifier.padding(16.dp))
+        Text(text = "Waiting for matches or there are no matches found")
+
     }
 
     val coroutineScope = rememberCoroutineScope()
