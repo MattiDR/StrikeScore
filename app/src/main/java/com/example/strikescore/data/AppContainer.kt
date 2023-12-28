@@ -3,6 +3,7 @@ package com.example.strikescore.data
 import android.content.Context
 import com.example.strikescore.data.database.StrikeScoreDb
 import com.example.strikescore.network.NetworkConnectionInterceptor
+import com.example.strikescore.network.match.MatchApiService
 import com.example.strikescore.network.standings.StandingsApiService
 import com.example.strikescore.network.team.TeamApiService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -14,6 +15,7 @@ import retrofit2.Retrofit
 interface AppContainer {
     val teamsRepository: TeamRepository
     val standingsRepository: StandingsRepository
+    val matchRepository: MatchRepository
 }
 
 // container that takes care of dependencies
@@ -41,6 +43,10 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         retrofit.create(StandingsApiService::class.java)
     }
 
+    private val retrofitMatchService: MatchApiService by lazy {
+        retrofit.create(MatchApiService::class.java)
+    }
+
     /*
     override val tasksRepository: TasksRepository by lazy {
         ApiTasksRepository(retrofitService)
@@ -52,5 +58,9 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
 
     override val standingsRepository: StandingsRepository by lazy {
         CachingStandingsRepository(StrikeScoreDb.getDatabase(context = context).standingsDao(), retrofitStandingsService, context)
+    }
+
+    override val matchRepository: MatchRepository by lazy {
+        CachingMatchRepository(StrikeScoreDb.getDatabase(context = context).matchDao(), retrofitMatchService, context)
     }
 }

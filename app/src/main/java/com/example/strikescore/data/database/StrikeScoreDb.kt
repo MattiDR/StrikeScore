@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.strikescore.data.database.matches.MatchDao
+import com.example.strikescore.data.database.matches.dbMatch
 import com.example.strikescore.data.database.standings.StandingsDao
 import com.example.strikescore.data.database.standings.dbStandings
 import com.example.strikescore.data.database.team.TeamDao
@@ -12,12 +14,14 @@ import com.example.strikescore.data.database.team.dbTeam
 /**
  * Database class with a singleton Instance object.
  */
-@Database(entities = [dbTeam::class, dbStandings::class], version = 5, exportSchema = false)
+@Database(entities = [dbTeam::class, dbStandings::class, dbMatch::class], version = 11, exportSchema = false)
 abstract class StrikeScoreDb : RoomDatabase() {
 
     abstract fun teamDao(): TeamDao
 
     abstract fun standingsDao(): StandingsDao
+
+    abstract fun matchDao(): MatchDao
 
     companion object {
         @Volatile

@@ -88,5 +88,8 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.1.0")
     implementation("io.coil-kt:coil-svg:2.1.0")
 
+    //timefix
+    implementation("joda-time:joda-time:2.10.14")
+
 
 }
