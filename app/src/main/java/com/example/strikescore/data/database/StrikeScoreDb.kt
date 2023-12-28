@@ -1,9 +1,11 @@
 package com.example.strikescore.data.database
 
+import com.example.strikescore.data.database.matches.ScoreTypeConverter
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.strikescore.data.database.matches.MatchDao
 import com.example.strikescore.data.database.matches.dbMatch
 import com.example.strikescore.data.database.standings.StandingsDao
@@ -14,7 +16,8 @@ import com.example.strikescore.data.database.team.dbTeam
 /**
  * Database class with a singleton Instance object.
  */
-@Database(entities = [dbTeam::class, dbStandings::class, dbMatch::class], version = 15, exportSchema = false)
+@Database(entities = [dbTeam::class, dbStandings::class, dbMatch::class], version = 19, exportSchema = false)
+@TypeConverters(ScoreTypeConverter::class)
 abstract class StrikeScoreDb : RoomDatabase() {
 
     abstract fun teamDao(): TeamDao

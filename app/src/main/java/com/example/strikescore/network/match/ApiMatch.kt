@@ -1,6 +1,7 @@
 package com.example.strikescore.network.match
 
 import com.example.strikescore.data.database.matches.dbMatch
+import com.example.strikescore.model.FullTime
 import com.example.strikescore.model.Match
 import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
@@ -28,7 +29,19 @@ data class ApiMatch(
     val matchday: Int,
     val homeTeam: ApiTeam,
     val awayTeam: ApiTeam,
-//    val score: ApiScore,
+    @Contextual
+    val score: Score,
+)
+
+@Serializable
+data class Score(
+    val fullTime: com.example.strikescore.network.match.FullTime,
+)
+
+@Serializable
+data class FullTime(
+    val home: Int?,
+    val away: Int?,
 )
 
 fun Flow<List<ApiMatch>>.asDomainObjects(): Flow<List<Match>> {
@@ -56,6 +69,12 @@ fun List<ApiMatch>.asDomainObjects(): List<Match> {
             status = it.status,
             matchday = it.matchday,
             utcDate = it.utcDate,
+            score = com.example.strikescore.model.Score(
+                FullTime(
+                    home = it.score.fullTime.home,
+                    away = it.score.fullTime.away
+                )
+            )
 
         )
     }

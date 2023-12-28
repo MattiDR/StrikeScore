@@ -3,14 +3,16 @@ package com.example.strikescore.data.database.matches
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.example.strikescore.data.database.team.asDbTeam
 import com.example.strikescore.data.database.team.asDomainTeam
 import com.example.strikescore.data.database.team.dbTeam
 import com.example.strikescore.model.Match
-import java.util.Date
+import com.example.strikescore.model.Score
 
 
 @Entity(tableName = "matches")
+@TypeConverters(ScoreTypeConverter::class)
 data class dbMatch (
     @PrimaryKey
     val id: Int,
@@ -20,7 +22,7 @@ data class dbMatch (
     val awayTeam: dbTeam,
     val status: String,
     val matchday: Int,
-//    val score : ,
+    val score : Score,
     val utcDate: String,
 )
 
@@ -32,6 +34,7 @@ fun dbMatch.asDomainMatch(): Match {
         this.status,
         this.matchday,
         this.utcDate,
+        this.score,
     )
 }
 
@@ -43,12 +46,13 @@ fun Match.asDbMatch(): dbMatch {
         status = this.status,
         matchday = this.matchday,
         utcDate = this.utcDate,
+        score = this.score,
     )
 }
 
 fun List<dbMatch>.asDomainMatches(): List<Match> {
     var matchList = this.map {
-        Match(it.id, it.homeTeam.asDomainTeam(), it.awayTeam.asDomainTeam(), it.status, it.matchday, it.utcDate)
+        Match(it.id, it.homeTeam.asDomainTeam(), it.awayTeam.asDomainTeam(), it.status, it.matchday, it.utcDate, it.score)
     }
     return matchList
 }

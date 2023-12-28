@@ -33,7 +33,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.strikescore.model.FullTime
 import com.example.strikescore.model.Match
+import com.example.strikescore.model.Score
 import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.DateItem
@@ -141,7 +143,7 @@ fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchO
 @Composable
 fun matchListComponentPreview() {
     MatchListComponent(matchOverviewState = MatchOverviewState(), matchListState = MatchListState(listOf(
-        Match(1, Team( "previewteam", "pre", "crest"), Team( "previewteam", "pre", "crest"), "", 1, "")
+        Match(1, Team( "previewteam", "pre", "crest"), Team( "previewteam", "pre", "crest"), "", 1, "", Score(FullTime(1, 1)))
     ))
     )
 }
@@ -184,7 +186,7 @@ fun DatePickerRow(
                 Text(
                     text = dateItem.dayOfWeek,
                     style = MaterialTheme.typography.bodyLarge.copy(
-                        color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
+                        color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                         fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                     )
                 )

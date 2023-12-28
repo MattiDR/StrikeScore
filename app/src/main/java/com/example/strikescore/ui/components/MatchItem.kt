@@ -90,15 +90,13 @@ fun MatchItem(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
                         Text(
-//                        text = match.score.fullTime.homeTeam.toString(),
-                            text = "1",
+                        text = match.score.fullTime.home.toString(),
                             style = MaterialTheme.typography.labelLarge,
                             modifier = Modifier
                                 .padding(8.dp),
                         )
                         Text(
-//                        text = match.score.fullTime.awayTeam.toString(),
-                            text = "0",
+                        text = match.score.fullTime.away.toString(),
                             style = MaterialTheme.typography.labelLarge,
                             modifier = Modifier
                                 .padding(8.dp),

@@ -9,5 +9,14 @@ data class Match(
     val status: String,
     val matchday: Int,
     val utcDate: String,
-//    val score: Score,
+    val score: Score,
+)
+
+data class Score(
+    val fullTime: FullTime,
+)
+
+data class FullTime(
+    val home: Int?,
+    val away: Int?,
 )
