@@ -27,6 +27,10 @@ import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.strikescore.model.Match
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -38,6 +42,7 @@ fun MatchItem(
     val imgLoader = ImageLoader.Builder(LocalContext.current).components {
         add(SvgDecoder.Factory())
     }.build()
+
 
     Card(
         colors = CardDefaults.cardColors(
@@ -103,7 +108,7 @@ fun MatchItem(
                 }
                 else{
                     Text(
-                        text = match.utcDate.split("T")[1].substring(0,5),
+                        text = convertToBelgianTime(match.utcDate).split("T")[1].substring(0,5),
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier
                             .padding(8.dp),
@@ -129,4 +134,19 @@ fun MatchItem(
 
         }
     }
+}
+
+fun convertToBelgianTime(utcTime: String): String {
+    // Parse the UTC time
+    val utcZonedDateTime = ZonedDateTime.parse(utcTime)
+
+    // Define the Belgian time zone (CET/CEST)
+    val belgianZoneId = ZoneId.of("Europe/Brussels")
+
+    // Convert the UTC time to Belgian time
+    val belgianTime = utcZonedDateTime.withZoneSameInstant(belgianZoneId)
+
+    // Format the Belgian time as a String to return
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX")
+    return belgianTime.format(formatter)
 }
