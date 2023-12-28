@@ -1,6 +1,8 @@
 package com.example.strikescore.ui.matchScreen
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -20,7 +22,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.time.LocalDate
 
+@RequiresApi(Build.VERSION_CODES.O)
 class MatchOverviewViewModel(private val matchRepository: MatchRepository) : ViewModel() {
     // use StateFlow (Flow: emits current state + any updates)
     /*
@@ -47,20 +51,24 @@ class MatchOverviewViewModel(private val matchRepository: MatchRepository) : Vie
     init {
 
         // initializes the uiListState
-        getRepoTasks()
+        selectDate(LocalDate.now().toString())
         Log.i("vm inspection", "TeamOverviewViewModel init")
 
 
 
     }
 
+    fun selectDate(date: String) {
+        getRepoTasks(date)
+    }
+
 
     // this
-    private fun getRepoTasks() {
+    private fun getRepoTasks(date:String) {
         try {
-            viewModelScope.launch { matchRepository.refresh() }
+            viewModelScope.launch { matchRepository.refresh(date) }
 
-            uiListState = matchRepository.getMatch().map { MatchListState(it) }
+            uiListState = matchRepository.getMatch(date).map { MatchListState(it) }
                 .stateIn(
                     scope = viewModelScope,
                     started = SharingStarted.WhileSubscribed(5_000L),

@@ -78,12 +78,38 @@ fun MatchItem(
                 modifier = modifier
                     .padding(8.dp),
             ){
-                Text(
-                    text = match.utcDate.split("T")[1].substring(0,5),
-                    style = MaterialTheme.typography.labelLarge,
-                    modifier = Modifier
-                        .padding(8.dp),
-                )
+
+                if(match.status.equals("FINISHED")){
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ){
+                        Text(
+//                        text = match.score.fullTime.homeTeam.toString(),
+                            text = "1",
+                            style = MaterialTheme.typography.labelLarge,
+                            modifier = Modifier
+                                .padding(8.dp),
+                        )
+                        Text(
+//                        text = match.score.fullTime.awayTeam.toString(),
+                            text = "0",
+                            style = MaterialTheme.typography.labelLarge,
+                            modifier = Modifier
+                                .padding(8.dp),
+                        )
+                    }
+
+                }
+                else{
+                    Text(
+                        text = match.utcDate.split("T")[1].substring(0,5),
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier
+                            .padding(8.dp),
+                    )
+                }
+
             }
 
             Box(

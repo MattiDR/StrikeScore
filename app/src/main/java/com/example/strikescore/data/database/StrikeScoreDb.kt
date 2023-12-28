@@ -14,7 +14,7 @@ import com.example.strikescore.data.database.team.dbTeam
 /**
  * Database class with a singleton Instance object.
  */
-@Database(entities = [dbTeam::class, dbStandings::class, dbMatch::class], version = 11, exportSchema = false)
+@Database(entities = [dbTeam::class, dbStandings::class, dbMatch::class], version = 15, exportSchema = false)
 abstract class StrikeScoreDb : RoomDatabase() {
 
     abstract fun teamDao(): TeamDao

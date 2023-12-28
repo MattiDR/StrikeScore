@@ -22,6 +22,6 @@ interface MatchDao {
     @Query("SELECT * from matches WHERE id = :id")
     fun getItem(id: Int): Flow<dbMatch>
 
-    @Query("SELECT * from matches ORDER BY utcDate ASC")
-    fun getAllItems(): Flow<List<dbMatch>>
+    @Query("SELECT * FROM matches WHERE date(utcDate) = date(:utcDate) ORDER BY utcDate ASC")
+    fun getAllItems(utcDate: String): Flow<List<dbMatch>>
 }

@@ -6,16 +6,21 @@ import com.example.strikescore.network.standings.ApiStandings
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.http.GET
+import retrofit2.http.Query
+
 interface MatchApiService {
     // suspend is added to force the user to call this in a coroutine scope
-    @GET("matches?dateFrom=2023-12-28&dateTo=2023-12-28")
-    suspend fun getMatches(): ApiResponseMatch
+    @GET("matches")
+    suspend fun getMatches(
+        @Query("dateFrom") dateFrom: String,
+        @Query("dateTo") dateTo: String
+    ): ApiResponseMatch
 }
 
 // helper function
-fun MatchApiService.getMatchesAsFlow(): Flow<List<ApiMatch>> = flow {
+fun MatchApiService.getMatchesAsFlow(date: String): Flow<List<ApiMatch>> = flow {
     try {
-        emit(getMatches().matches)
+        emit(getMatches(date, date).matches)
     }
     catch(e: Exception){
         Log.e("API", "getTasksAsFlow: "+e.stackTraceToString(), )

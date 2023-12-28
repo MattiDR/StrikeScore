@@ -11,6 +11,7 @@ import com.example.strikescore.data.database.matches.MatchDao
 import com.example.strikescore.data.database.matches.asDbMatch
 import com.example.strikescore.data.database.matches.asDomainMatch
 import com.example.strikescore.data.database.matches.asDomainMatches
+import com.example.strikescore.data.database.matches.dbMatch
 import com.example.strikescore.data.database.standings.StandingsDao
 import com.example.strikescore.data.database.standings.asDbStandings
 import com.example.strikescore.data.database.standings.asDomainStandings
@@ -26,6 +27,7 @@ import com.example.strikescore.workerUtils.WifiNotificationWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.runBlocking
 import java.net.SocketTimeoutException
 import java.util.UUID
 
@@ -33,7 +35,7 @@ import java.util.UUID
 interface MatchRepository {
 
     // all items from datasource
-    fun getMatch(): Flow<List<Match>>
+    fun getMatch(date:String): Flow<List<Match>>
 
     // one specific item
     fun getMatch(id: Int): Flow<Match?>
@@ -44,7 +46,7 @@ interface MatchRepository {
 
     suspend fun updateMatch(match: Match)
 
-    suspend fun refresh()
+    suspend fun refresh(date: String)
 
     var wifiWorkInfo: Flow<WorkInfo>
 
@@ -54,20 +56,20 @@ class CachingMatchRepository(private val matchDao: MatchDao, private val matchAp
 
     // this repo contains logic to refresh the tasks (remote)
     // sometimes that logic is written in a 'usecase'
-    override fun getMatch(): Flow<List<Match>> {
+    override fun getMatch(date: String): Flow<List<Match>> {
         // checkes the array of items comming in
         // when empty --> tries to fetch from API
         // clear the DB if inspector is broken...
-        /*runBlocking { taskDao.getAllItems().collect{
-            for(t: dbTask in it)
-                taskDao.delete(t)
-        } }*/
-        return matchDao.getAllItems().map {
+//        runBlocking { matchDao.getAllItems(dateFrom).collect{
+//            for(t: dbMatch in it)
+//                matchDao.delete(t)
+//        } }
+        return matchDao.getAllItems(date).map {
             it.asDomainMatches()
         }.onEach {
             // todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
-                refresh()
+                refresh(date)
             }
         }
     }
@@ -99,7 +101,7 @@ class CachingMatchRepository(private val matchDao: MatchDao, private val matchAp
     override var wifiWorkInfo: Flow<WorkInfo> =
         workManager.getWorkInfoByIdFlow(workID)
 
-    override suspend fun refresh() {
+    override suspend fun refresh(date: String) {
         //refresh is used to schedule the workrequest
 
         val constraints =
@@ -114,7 +116,7 @@ class CachingMatchRepository(private val matchDao: MatchDao, private val matchAp
 
         //note the actual api request still uses coroutines
         try {
-            matchApiService.getMatchesAsFlow().asDomainObjects().collect { value ->
+            matchApiService.getMatchesAsFlow(date).asDomainObjects().collect { value ->
                 for (standing in value) {
                     Log.i("TEST", "refresh: $value")
                     insertMatch(standing)
