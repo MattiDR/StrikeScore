@@ -11,10 +11,6 @@ import com.example.strikescore.data.database.matches.MatchDao
 import com.example.strikescore.data.database.matches.asDbMatch
 import com.example.strikescore.data.database.matches.asDomainMatch
 import com.example.strikescore.data.database.matches.asDomainMatches
-import com.example.strikescore.data.database.matches.dbMatch
-import com.example.strikescore.data.database.standings.StandingsDao
-import com.example.strikescore.data.database.standings.asDbStandings
-import com.example.strikescore.data.database.standings.asDomainStandings
 import com.example.strikescore.model.Match
 import com.example.strikescore.model.Standings
 import com.example.strikescore.network.match.MatchApiService

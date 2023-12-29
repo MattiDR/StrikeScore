@@ -1,6 +1,6 @@
 package com.example.strikescore.network.match
 
-import com.example.strikescore.data.database.matches.dbMatch
+import com.example.strikescore.data.database.matches.DbMatch
 import com.example.strikescore.model.FullTime
 import com.example.strikescore.model.Match
 import com.example.strikescore.model.Standings

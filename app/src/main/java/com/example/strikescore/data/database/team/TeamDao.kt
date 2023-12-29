@@ -11,17 +11,17 @@ import androidx.room.OnConflictStrategy.Companion as OnConflictStrategy1
 @Dao
 interface TeamDao {
     @Insert(onConflict = OnConflictStrategy1.REPLACE)
-    suspend fun insert(item: dbTeam)
+    suspend fun insert(item: DbTeam)
 
     @Update
-    suspend fun update(item: dbTeam)
+    suspend fun update(item: DbTeam)
 
     @Delete
-    suspend fun delete(item: dbTeam)
+    suspend fun delete(item: DbTeam)
 
     @Query("SELECT * from teams WHERE name = :name")
-    fun getItem(name: String): Flow<dbTeam>
+    fun getItem(name: String): Flow<DbTeam>
 
     @Query("SELECT * from teams ORDER BY name ASC")
-    fun getAllItems(): Flow<List<dbTeam>>
+    fun getAllItems(): Flow<List<DbTeam>>
 }

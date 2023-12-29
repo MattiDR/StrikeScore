@@ -1,7 +1,5 @@
 package com.example.strikescore.model
 
-import com.example.strikescore.data.database.team.dbTeam
-
 data class Standings(
     val position: Int,
     val team: Team,

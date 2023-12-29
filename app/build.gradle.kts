@@ -3,6 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
     id("com.google.devtools.ksp")
+    id("org.jetbrains.dokka") version "1.5.0"
+}
+
+tasks.dokkaHtml {
+    outputDirectory.set(file("$rootDir/kDoc"))
 }
 
 android {
@@ -87,6 +92,4 @@ dependencies {
 
     implementation("io.coil-kt:coil-compose:2.1.0")
     implementation("io.coil-kt:coil-svg:2.1.0")
-
-
 }

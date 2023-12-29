@@ -11,17 +11,17 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MatchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(item: dbMatch)
+    suspend fun insert(item: DbMatch)
 
     @Update
-    suspend fun update(item: dbMatch)
+    suspend fun update(item: DbMatch)
 
     @Delete
-    suspend fun delete(item: dbMatch)
+    suspend fun delete(item: DbMatch)
 
     @Query("SELECT * from matches WHERE id = :id")
-    fun getItem(id: Int): Flow<dbMatch>
+    fun getItem(id: Int): Flow<DbMatch>
 
     @Query("SELECT * FROM matches WHERE date(utcDate) = date(:utcDate) ORDER BY utcDate ASC")
-    fun getAllItems(utcDate: String): Flow<List<dbMatch>>
+    fun getAllItems(utcDate: String): Flow<List<DbMatch>>
 }

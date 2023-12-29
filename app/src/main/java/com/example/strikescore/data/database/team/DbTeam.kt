@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.strikescore.model.Team
 
 @Entity(tableName = "teams")
-data class dbTeam(
+data class DbTeam(
     @PrimaryKey
     val name: String,
     val tla: String,
@@ -13,7 +13,7 @@ data class dbTeam(
 
     )
 
-fun dbTeam.asDomainTeam(): Team {
+fun DbTeam.asDomainTeam(): Team {
     return Team(
         this.name,
         this.tla,
@@ -21,15 +21,15 @@ fun dbTeam.asDomainTeam(): Team {
     )
 }
 
-fun Team.asDbTeam(): dbTeam {
-    return dbTeam(
+fun Team.asDbTeam(): DbTeam {
+    return DbTeam(
         name = this.name,
         tla = this.tla,
         crest = this.crest,
     )
 }
 
-fun List<dbTeam>.asDomainTeams(): List<Team> {
+fun List<DbTeam>.asDomainTeams(): List<Team> {
     var teamList = this.map {
         Team(it.name, it.tla, it.crest)
     }

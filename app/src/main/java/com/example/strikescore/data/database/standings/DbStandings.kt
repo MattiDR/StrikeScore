@@ -3,18 +3,17 @@ package com.example.strikescore.data.database.standings
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.strikescore.data.database.team.DbTeam
 import com.example.strikescore.data.database.team.asDbTeam
 import com.example.strikescore.data.database.team.asDomainTeam
-import com.example.strikescore.data.database.team.dbTeam
 import com.example.strikescore.model.Standings
-import com.example.strikescore.model.Team
 
 @Entity(tableName = "standings")
-data class dbStandings(
+data class DbStandings(
     @PrimaryKey
     val position: Int,
     @Embedded
-    val team: dbTeam,
+    val team: DbTeam,
     val playedGames: Int,
     val won: Int,
     val draw: Int,
@@ -25,7 +24,7 @@ data class dbStandings(
     val goalDifference: Int,
 )
 
-fun dbStandings.asDomainStandings(): Standings {
+fun DbStandings.asDomainStandings(): Standings {
     return Standings(
         this.position,
         this.team.asDomainTeam(),
@@ -40,8 +39,8 @@ fun dbStandings.asDomainStandings(): Standings {
     )
 }
 
-fun Standings.asDbStandings(): dbStandings {
-    return dbStandings(
+fun Standings.asDbStandings(): DbStandings {
+    return DbStandings(
         position = this.position,
         team = this.team.asDbTeam(),
         playedGames = this.playedGames,
@@ -55,7 +54,7 @@ fun Standings.asDbStandings(): dbStandings {
     )
 }
 
-fun List<dbStandings>.asDomainStandings(): List<Standings> {
+fun List<DbStandings>.asDomainStandings(): List<Standings> {
     var standingsList = this.map {
         Standings(
             it.position,
