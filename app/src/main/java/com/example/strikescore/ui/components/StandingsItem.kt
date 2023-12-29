@@ -20,11 +20,13 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.example.strikescore.R
 import com.example.strikescore.model.Standings
 
 @Composable
@@ -71,7 +73,7 @@ fun StandingsItem(
 
                 AsyncImage(
                         model = ImageRequest.Builder(LocalContext.current).data(standing.team.crest).crossfade(true).build(),
-                        contentDescription = "crest",
+                        contentDescription = stringResource(R.string.standingscrest),
                         imageLoader = imgLoader,
                         modifier = Modifier
                             .size(50.dp)

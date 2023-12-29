@@ -25,11 +25,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.example.strikescore.R
 import com.example.strikescore.model.Team
 
 
@@ -62,7 +64,7 @@ fun TeamItem(
             ) {
                 AsyncImage(
                        model = ImageRequest.Builder(LocalContext.current).data(team.crest).crossfade(true).build(),
-                       contentDescription = "crest",
+                       contentDescription = stringResource(R.string.teamcrest),
                        imageLoader = imgLoader,
                           modifier = Modifier
                               .size(100.dp)

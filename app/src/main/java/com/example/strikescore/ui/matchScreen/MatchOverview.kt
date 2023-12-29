@@ -28,11 +28,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.strikescore.R
 import com.example.strikescore.model.FullTime
 import com.example.strikescore.model.Match
 import com.example.strikescore.model.Score
@@ -106,8 +108,8 @@ fun MatchOverview(
 
         Box(modifier = modifier) {
             when (matchApiState) {
-                is MatchApiState.Loading -> Text("Loading...")
-                is MatchApiState.Error -> Text("Couldn't load...")
+                is MatchApiState.Loading -> Text(stringResource(R.string.loading))
+                is MatchApiState.Error -> Text(stringResource(R.string.couldn_t_load))
                 is MatchApiState.Success -> MatchListComponent(matchOverviewState = matchOverviewState, matchListState = matchListState)
             }
         }
@@ -125,7 +127,7 @@ fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchO
         }
     } else {
         // Display "No matches" message when there are no matches
-        Text(text = "Waiting for matches or there are no matches found")
+        Text(text = stringResource(R.string.waiting_or_no_matches))
 
     }
 
@@ -138,15 +140,6 @@ fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchO
             }
         }
     }
-}
-
-@Preview(showBackground = true, widthDp = 1000)
-@Composable
-fun matchListComponentPreview() {
-    MatchListComponent(matchOverviewState = MatchOverviewState(), matchListState = MatchListState(listOf(
-        Match(1, Team( "previewteam", "pre", "crest"), Team( "previewteam", "pre", "crest"), "", 1, "", Score(FullTime(1, 1)))
-    ))
-    )
 }
 
 @Composable

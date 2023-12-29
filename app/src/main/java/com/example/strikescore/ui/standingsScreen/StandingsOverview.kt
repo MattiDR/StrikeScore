@@ -12,8 +12,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.strikescore.R
 import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.StandingsItem
@@ -47,8 +49,8 @@ fun StandingsOverview(
 
         Box(modifier = modifier) {
             when (standingsApiState) {
-                is StandingsApiState.Loading -> Text("Loading...")
-                is StandingsApiState.Error -> Text("Couldn't load...")
+                is StandingsApiState.Loading -> Text(stringResource(R.string.loading))
+                is StandingsApiState.Error -> Text(stringResource(R.string.couldn_t_load))
                 is StandingsApiState.Success -> TaskListComponent(standingsOverviewState = standingsOverviewState, standingsListState = standingsListState)
             }
         }
@@ -59,7 +61,6 @@ fun TaskListComponent(modifier: Modifier = Modifier, standingsOverviewState: Sta
     val lazyListState = rememberLazyListState()
     LazyColumn(state = lazyListState) {
         items(standingsListState.standingsList.size) {
-//            TeamItem(name = standingsListState.teamList[it].name, crest = teamListState.teamList[it].crest)
             StandingsItem(standing = standingsListState.standingsList[it])
         }
     }
@@ -72,13 +73,4 @@ fun TaskListComponent(modifier: Modifier = Modifier, standingsOverviewState: Sta
             }
         }
     }
-}
-
-@Preview(showBackground = true, widthDp = 1000)
-@Composable
-fun standingsListComponentPreview() {
-    TaskListComponent(standingsOverviewState = StandingsOverviewState(), standingsListState = StandingsListState(listOf(
-        Standings(1, Team( "previewteam", "pre", "crest"), 1, 1, 1, 1, 1, 1, 1, 1)
-    ))
-    )
 }

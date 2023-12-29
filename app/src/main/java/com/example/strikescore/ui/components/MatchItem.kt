@@ -21,11 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.example.strikescore.R
 import com.example.strikescore.model.Match
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -71,7 +73,7 @@ fun MatchItem(
             ){
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(match.homeTeam.crest).crossfade(true).build(),
-                    contentDescription = "hometeamcrest",
+                    contentDescription = stringResource(R.string.hometeamcrest),
                     imageLoader = imgLoader,
                     modifier = Modifier
                         .size(100.dp)
@@ -141,7 +143,7 @@ fun MatchItem(
             ){
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(match.awayTeam.crest).crossfade(true).build(),
-                    contentDescription = "awayteamcrest",
+                    contentDescription = stringResource(R.string.awayteamcrest),
                     imageLoader = imgLoader,
                     modifier = Modifier
                         .size(100.dp)

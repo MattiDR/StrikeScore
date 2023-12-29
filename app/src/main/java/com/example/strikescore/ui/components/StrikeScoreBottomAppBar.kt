@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import com.example.strikescore.R
 import com.example.strikescore.ui.theme.StrikeScoreTheme
@@ -26,17 +27,17 @@ fun StrikeScoreBottomAppBar(goTeams: () -> Unit, goMatches: () -> Unit, goStandi
     StrikeScoreTheme {
         val items = listOf(
             BottomNavigationItem(
-                title = "Teams",
+                title = stringResource(R.string.team_title),
                 selectedIcon = ImageVector.vectorResource(R.drawable.teams),
                 unselectedIcon = ImageVector.vectorResource(R.drawable.teams),
             ),
             BottomNavigationItem(
-                title = "Matches",
+                title = stringResource(R.string.matches_title),
                 selectedIcon = ImageVector.vectorResource(R.drawable.ball),
                 unselectedIcon = ImageVector.vectorResource(R.drawable.ball),
             ),
             BottomNavigationItem(
-                title = "Standings",
+                title = stringResource(R.string.standings_title),
                 selectedIcon = ImageVector.vectorResource(R.drawable.standings),
                 unselectedIcon = ImageVector.vectorResource(R.drawable.standings),
             ),

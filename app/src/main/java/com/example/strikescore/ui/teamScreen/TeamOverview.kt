@@ -12,8 +12,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.strikescore.R
 import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.TeamItem
 import kotlinx.coroutines.launch
@@ -40,8 +42,8 @@ fun TeamOverview(
 
         Box(modifier = modifier) {
             when (teamApiState) {
-                is TeamApiState.Loading -> Text("Loading...")
-                is TeamApiState.Error -> Text("Couldn't load...")
+                is TeamApiState.Loading -> Text(stringResource(R.string.loading))
+                is TeamApiState.Error -> Text(stringResource(R.string.couldn_t_load))
                 is TeamApiState.Success -> TaskListComponent(teamOverviewState = teamOverviewState, teamListState = teamListState)
             }
         }
@@ -64,13 +66,4 @@ fun TaskListComponent(modifier: Modifier = Modifier, teamOverviewState: TeamOver
             }
         }
     }
-}
-
-@Preview(showBackground = true, widthDp = 1000)
-@Composable
-fun TeamListComponentPreview() {
-    TaskListComponent(teamOverviewState = TeamOverviewState(), teamListState = TeamListState(listOf(
-        Team("previewteam", "pre", "crest")
-    ))
-    )
 }

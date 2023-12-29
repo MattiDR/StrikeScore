@@ -38,13 +38,6 @@ fun StrikeScoreApp(
 ){
     val backStackEntry by navController.currentBackStackEntryAsState()
 
-    val goMatch: () -> Unit = {
-        navController.popBackStack(
-            StrikeScoreOverviewScreen.Matches.name,
-            inclusive = false
-        )
-    }
-
     val goToMatches = { navController.navigate(StrikeScoreOverviewScreen.Matches.name) {launchSingleTop = true} }
     val goToStandings = { navController.navigate(StrikeScoreOverviewScreen.Standings.name) {launchSingleTop = true} }
     val goToTeams = { navController.navigate(StrikeScoreOverviewScreen.Teams.name) {launchSingleTop = true} }

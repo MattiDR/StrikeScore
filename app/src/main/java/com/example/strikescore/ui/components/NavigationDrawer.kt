@@ -37,7 +37,7 @@ fun NavigationDrawerContent(
                 },
                 icon = {
                     Icon(
-                        tint = Color.White,
+                        tint = MaterialTheme.colorScheme.onPrimary,
                         painter = painter,
                         contentDescription = navItem.name,
                     )
