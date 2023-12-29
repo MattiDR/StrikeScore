@@ -18,4 +18,4 @@ val onDarkGray = Color.White
 
 val darkBackground = Color(0xFF1A1A1A)
 
-val selectedDarkGreen = Color(0xFF254014)
+val selectedDarkGreen = Color(0xFF35A024)
