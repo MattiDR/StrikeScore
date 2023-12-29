@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavDestination
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
 import com.example.strikescore.ui.theme.backgroundBottomNavigationBar
@@ -21,7 +23,6 @@ import com.example.strikescore.ui.theme.backgroundSelectedBottomNavigationBar
 fun StrikeScoreNavigationRail(selectedDestination: NavDestination?, onTabPressed: (String) -> Unit, modifier: Modifier = Modifier) {
     NavigationRail(modifier = modifier, containerColor = backgroundBottomNavigationBar) {
         for (navItem in StrikeScoreOverviewScreen.values()) {
-            val painter: Painter = painterResource(id = navItem.icon)
             NavigationRailItem(
                 colors = NavigationRailItemDefaults.colors(
                     indicatorColor = backgroundSelectedBottomNavigationBar
@@ -30,8 +31,8 @@ fun StrikeScoreNavigationRail(selectedDestination: NavDestination?, onTabPressed
                 onClick = { onTabPressed(navItem.name) },
                 icon = {
                     Icon(
+                        imageVector = ImageVector.vectorResource(navItem.icon),
                         tint = Color.White,
-                        painter = painter,
                         contentDescription = navItem.name,
                     )
                 },

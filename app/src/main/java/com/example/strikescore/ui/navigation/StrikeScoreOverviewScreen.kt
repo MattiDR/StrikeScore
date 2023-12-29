@@ -12,7 +12,7 @@ import androidx.compose.ui.res.painterResource
 import com.example.strikescore.R
 
 
-enum class StrikeScoreOverviewScreen(@StringRes val title: Int, @DrawableRes val icon: Int) {
+enum class StrikeScoreOverviewScreen(@StringRes val title: Int, val icon: Int) {
     Teams(title = R.string.team_title, icon = R.drawable.teams),
     Matches(title = R.string.matches_title, icon = R.drawable.ball),
     Standings(title= R.string.standings_title, icon = R.drawable.standings)
