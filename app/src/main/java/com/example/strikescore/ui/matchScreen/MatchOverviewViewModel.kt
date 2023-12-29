@@ -24,7 +24,12 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import java.time.LocalDate
 
-@RequiresApi(Build.VERSION_CODES.O)
+
+/**
+ * ViewModel for the Match Overview screen.
+ *
+ * @param matchRepository The repository responsible for handling match-related data.
+ */
 class MatchOverviewViewModel(private val matchRepository: MatchRepository) : ViewModel() {
     // use StateFlow (Flow: emits current state + any updates)
     /*
@@ -58,13 +63,26 @@ class MatchOverviewViewModel(private val matchRepository: MatchRepository) : Vie
 
     }
 
+    /**
+     * Selects and retrieves matches for the specified date.
+     *
+     * @param date The date for which matches are to be retrieved.
+     */
     fun selectDate(date: String) {
-        getRepoTasks(date)
+        getMatchTasks(date)
     }
 
 
-    // this
-    private fun getRepoTasks(date:String) {
+    /**
+     * updates repository matches and UI states based on the specified date.
+     *
+     * 1. Refreshes match repository.
+     * 2. Updates [uiListState] and [wifiWorkerState].
+     * 3. Sets [matchApiState] to [Success] or [Error] on API request result.
+     *
+     * @param date The date for retrieving matches.
+     */
+    private fun getMatchTasks(date:String) {
         try {
             viewModelScope.launch { matchRepository.refresh(date) }
 

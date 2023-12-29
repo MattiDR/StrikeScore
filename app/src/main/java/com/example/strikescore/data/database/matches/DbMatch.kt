@@ -10,6 +10,21 @@ import com.example.strikescore.data.database.team.asDomainTeam
 import com.example.strikescore.model.Match
 import com.example.strikescore.model.Score
 
+/**
+ * Database entity representing a match.
+ *
+ * This class is annotated with [Entity] to specify that it represents a table in the Room database.
+ * The table name is "matches". It uses the [TypeConverters] annotation to specify the [ScoreTypeConverter]
+ * for converting the [Score] object to a format that can be stored in the database.
+ *
+ * @property id Primary key for the match.
+ * @property homeTeam Embedded [DbTeam] object representing the home team.
+ * @property awayTeam Embedded [DbTeam] object representing the away team.
+ * @property status Status of the match.
+ * @property matchday Matchday of the match.
+ * @property score [Score] object representing the match score.
+ * @property utcDate UTC date and time of the match.
+ */
 @Entity(tableName = "matches")
 @TypeConverters(ScoreTypeConverter::class)
 data class DbMatch (
@@ -42,6 +57,11 @@ fun DbMatch.asDomainMatch(): Match {
     )
 }
 
+/**
+ * Extension function to convert a [Match] object to a [DbMatch].
+ *
+ * @return Corresponding [DbMatch] object.
+ */
 fun Match.asDbMatch(): DbMatch {
     return DbMatch(
         id = this.id,
@@ -54,6 +74,11 @@ fun Match.asDbMatch(): DbMatch {
     )
 }
 
+/**
+ * Extension function to convert a list of [DbMatch] objects to a list of [Match] objects.
+ *
+ * @return Corresponding list of [Match] objects.
+ */
 fun List<DbMatch>.asDomainMatches(): List<Match> {
     var matchList = this.map {
         Match(it.id, it.homeTeam.asDomainTeam(), it.awayTeam.asDomainTeam(), it.status, it.matchday, it.utcDate, it.score)

@@ -20,6 +20,12 @@ import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.TeamItem
 import kotlinx.coroutines.launch
 
+/**
+ * Composable function for displaying the team overview screen.
+ *
+ * @param modifier Modifier for styling the composable.
+ * @param teamOverviewViewModel ViewModel for handling data and business logic.
+ */
 @Composable
 fun TeamOverview(
     modifier: Modifier = Modifier,
@@ -49,6 +55,14 @@ fun TeamOverview(
         }
     }
 }
+
+/**
+ * Composable function for displaying the list of teams.
+ *
+ * @param modifier Modifier for styling the composable.
+ * @param teamOverviewState The state of the team overview screen.
+ * @param teamListState The state of the team list.
+ */
 @Composable
 fun TaskListComponent(modifier: Modifier = Modifier, teamOverviewState: TeamOverviewState, teamListState: TeamListState) {
     val lazyListState = rememberLazyListState()

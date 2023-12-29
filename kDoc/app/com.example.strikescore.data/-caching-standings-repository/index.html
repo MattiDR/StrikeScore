@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CachingStandingsRepository</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="app::com.example.strikescore.data/CachingStandingsRepository///PointingToDeclaration//492899073">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">com.example.strikescore.data</a>/<a href="index.html">CachingStandingsRepository</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Caching</span><wbr></wbr><span>Standings</span><wbr></wbr><span>Repository</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">CachingStandingsRepository</a>(standingsDao: <a href="../../com.example.strikescore.data.database.standings/-standings-dao/index.html">StandingsDao</a>, standingsApiService: <a href="../../com.example.strikescore.network.standings/-standings-api-service/index.html">StandingsApiService</a>, context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>) : <a href="../-standings-repository/index.html">StandingsRepository</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">An implementation of the StandingsRepository interface that provides caching and remote data retrieval using WorkManager.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Parameters</h2>
+              <div data-togglable="Parameters">
+                <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">standingsDao</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The DAO (Data Access Object) for Standings entities.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">standingsApiService</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The service for fetching standings data from a remote source.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">context</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The application context.</p></div></div></div></div></div></div></div></div></div>
+              </div>
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="1750793859%2FConstructors%2F492899073" anchor-label="CachingStandingsRepository" id="1750793859%2FConstructors%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-caching-standings-repository.html">CachingStandingsRepository</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750793859%2FConstructors%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">fun <a href="-caching-standings-repository.html">CachingStandingsRepository</a>(standingsDao: <a href="../../com.example.strikescore.data.database.standings/-standings-dao/index.html">StandingsDao</a>, standingsApiService: <a href="../../com.example.strikescore.network.standings/-standings-api-service/index.html">StandingsApiService</a>, context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">The DAO (Data Access Object) for Standings entities.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-2064441241%2FFunctions%2F492899073" anchor-label="deleteStandings" id="-2064441241%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="delete-standings.html">deleteStandings</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2064441241%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="delete-standings.html">deleteStandings</a>(standings: <a href="../../com.example.strikescore.model/-standings/index.html">Standings</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-2064441241%2FFunctions%2F492899073" anchor-label="deleteStandings" id="-2064441241%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-2064441241%2FFunctions%2F492899073" anchor-label="deleteStandings" id="-2064441241%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Deletes a standings entry from the local database.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1994524918%2FFunctions%2F492899073" anchor-label="getStandings" id="-1994524918%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-standings.html">getStandings</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1994524918%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-standings.html">getStandings</a>(): <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../com.example.strikescore.model/-standings/index.html">Standings</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="276851349%2FFunctions%2F492899073" anchor-label="getStandings" id="276851349%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="276851349%2FFunctions%2F492899073" anchor-label="getStandings" id="276851349%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Retrieves all standings from the data source.</div></div>
+<div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-standings.html">getStandings</a>(position: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>): <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span>&lt;<a href="../../com.example.strikescore.model/-standings/index.html">Standings</a>?&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1966739981%2FFunctions%2F492899073" anchor-label="getStandings" id="-1966739981%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-1966739981%2FFunctions%2F492899073" anchor-label="getStandings" id="-1966739981%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Retrieves a specific standing by its position.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1263328487%2FFunctions%2F492899073" anchor-label="insertStandings" id="-1263328487%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="insert-standings.html">insertStandings</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1263328487%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="insert-standings.html">insertStandings</a>(standings: <a href="../../com.example.strikescore.model/-standings/index.html">Standings</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1263328487%2FFunctions%2F492899073" anchor-label="insertStandings" id="-1263328487%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-1263328487%2FFunctions%2F492899073" anchor-label="insertStandings" id="-1263328487%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Inserts a new standings entry into the local database.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-626531591%2FFunctions%2F492899073" anchor-label="refresh" id="-626531591%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="refresh.html">refresh</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-626531591%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="refresh.html">refresh</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-626531591%2FFunctions%2F492899073" anchor-label="refresh" id="-626531591%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-626531591%2FFunctions%2F492899073" anchor-label="refresh" id="-626531591%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Refreshes the standings data by scheduling a Wi-Fi dependent background task.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="48758537%2FFunctions%2F492899073" anchor-label="updateStandings" id="48758537%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="update-standings.html">updateStandings</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="48758537%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="update-standings.html">updateStandings</a>(standings: <a href="../../com.example.strikescore.model/-standings/index.html">Standings</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="48758537%2FFunctions%2F492899073" anchor-label="updateStandings" id="48758537%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="48758537%2FFunctions%2F492899073" anchor-label="updateStandings" id="48758537%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Updates an existing standings entry in the local database.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="-608765614%2FProperties%2F492899073" anchor-label="wifiWorkInfo" id="-608765614%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="wifi-work-info.html">wifiWorkInfo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-608765614%2FProperties%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="-608765614%2FProperties%2F492899073" anchor-label="wifiWorkInfo" id="-608765614%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace">open override var <a href="wifi-work-info.html">wifiWorkInfo</a>: <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span>&lt;<a href="https://developer.android.com/reference/kotlin/androidx/work/WorkInfo.html">WorkInfo</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-608765614%2FProperties%2F492899073" anchor-label="wifiWorkInfo" id="-608765614%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>A flow of WorkInfo representing the status of the Wi-Fi notification background task.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

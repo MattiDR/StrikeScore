@@ -4,21 +4,25 @@ import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.http.GET
-
-// create the actual function implementations (expensive!)
-// no longer needed --> moved to the AppContainer
-// object TaskApi{
-//
-// }
-
-// define what the API looks like
+/**
+ * Interface representing the Team API Service, responsible for interacting with the
+ * backend API to retrieve information about teams.
+ */
 interface TeamApiService {
-    // suspend is added to force the user to call this in a coroutine scope
+    /**
+     * Retrieves a list of teams from the API.
+     *
+     * @return An [ApiResponseTeams] object containing a list of [ApiTeam] objects.
+     */
     @GET("teams")
     suspend fun getTasks(): ApiResponseTeams
 }
 
-// helper function
+/**
+ * Extension function to convert the result of [getTasks] to a [Flow] of [ApiTeam] objects.
+ *
+ * @return A [Flow] emitting a list of [ApiTeam] objects.
+ */
 fun TeamApiService.getTasksAsFlow(): Flow<List<ApiTeam>> = flow {
     try {
         emit(getTasks().teams)

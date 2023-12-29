@@ -18,6 +18,13 @@ import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavDestination
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
 
+/**
+ * Composable function representing the navigation rail in the app, displaying items for each destination.
+ *
+ * @param selectedDestination The currently selected navigation destination.
+ * @param onTabPressed Callback function to be invoked when a navigation item is pressed.
+ * @param modifier Modifier for styling the [StrikeScoreNavigationRail] composable.
+ */
 @Composable
 fun StrikeScoreNavigationRail(selectedDestination: NavDestination?, onTabPressed: (String) -> Unit, modifier: Modifier = Modifier) {
     NavigationRail(modifier = modifier, containerColor = MaterialTheme.colorScheme.primary) {

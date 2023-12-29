@@ -21,7 +21,19 @@ data class BottomNavigationItem(
     val badgeCount: Int? = null,
 )
 
+/**
+ * Main activity for the Strike Score application.
+ *
+ * This activity sets up the Compose UI based on the window size class and initializes the
+ * [StrikeScoreApp] accordingly.
+ */
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Overrides the onCreate method to set up the Compose UI.
+     *
+     * @param savedInstanceState The saved instance state.
+     */
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

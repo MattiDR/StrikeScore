@@ -35,7 +35,12 @@ import coil.request.ImageRequest
 import com.example.strikescore.R
 import com.example.strikescore.model.Team
 
-
+/**
+ * Composable function representing a UI element for displaying information about a team.
+ *
+ * @param modifier Modifier for styling the [TeamItem] composable.
+ * @param team The [Team] object containing information about the team.
+ */
 @SuppressLint("SuspiciousIndentation")
 @Composable
 fun TeamItem(

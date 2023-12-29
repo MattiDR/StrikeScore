@@ -31,6 +31,16 @@ import com.example.strikescore.ui.matchScreen.MatchOverview
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
 import com.example.strikescore.ui.navigation.navComponent
 
+/**
+ * Composable function representing the main structure of the Strike Score application.
+ *
+ * This function sets up the UI layout based on the provided [navigationType].
+ *
+ * @param navigationType The type of navigation used in the application, such as
+ * [StrikeScoreNavigationType.BOTTOM_NAVIGATION], [StrikeScoreNavigationType.NAVIGATION_RAIL],
+ * or [StrikeScoreNavigationType.PERMANENT_NAVIGATION_DRAWER].
+ * @param navController The navigation controller for managing navigation within the app.
+ */
 @Composable
 fun StrikeScoreApp(
     navigationType: StrikeScoreNavigationType,

@@ -35,6 +35,13 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
+
+/**
+ * Composable function representing a UI element for displaying information about a [Match].
+ *
+ * @param modifier Modifier for styling the [MatchItem] composable.
+ * @param match The [Match] object containing information about the match.
+ */
 @SuppressLint("SuspiciousIndentation")
 @Composable
 fun MatchItem(
@@ -159,6 +166,12 @@ fun MatchItem(
     }
 }
 
+/**
+ * Converts the provided UTC time to Belgian time and formats it as a String.
+ *
+ * @param utcTime The UTC time string to be converted.
+ * @return The formatted Belgian time string.
+ */
 fun convertToBelgianTime(utcTime: String): String {
     // Parse the UTC time
     val utcZonedDateTime = ZonedDateTime.parse(utcTime)

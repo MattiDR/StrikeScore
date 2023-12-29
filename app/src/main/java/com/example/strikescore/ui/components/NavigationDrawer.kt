@@ -17,6 +17,14 @@ import androidx.navigation.NavDestination
 import com.example.strikescore.R
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
 
+/**
+ * Composable function representing the content of the navigation drawer, displaying
+ * items for each destination in the app.
+ *
+ * @param selectedDestination The currently selected navigation destination.
+ * @param onTabPressed Callback function to be invoked when a navigation item is pressed.
+ * @param modifier Modifier for styling the [NavigationDrawerContent] composable.
+ */
 @Composable
 fun NavigationDrawerContent(
     selectedDestination: NavDestination?,

@@ -23,6 +23,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+
+/**
+ * ViewModel for the Team Overview screen.
+ *
+ * @param teamsRepository The repository responsible for handling team-related data.
+ */
 class TeamOverviewViewModel(private val teamsRepository: TeamRepository) : ViewModel() {
     // use StateFlow (Flow: emits current state + any updates)
     /*
@@ -49,7 +55,7 @@ class TeamOverviewViewModel(private val teamsRepository: TeamRepository) : ViewM
     init {
 
         // initializes the uiListState
-        getRepoTasks()
+        getRepoTeams()
         Log.i("vm inspection", "TeamOverviewViewModel init")
 
 
@@ -57,8 +63,14 @@ class TeamOverviewViewModel(private val teamsRepository: TeamRepository) : ViewM
     }
 
 
-    // this
-    private fun getRepoTasks() {
+    /**
+     * updates repository teams and UI states based on the specified date.
+     *
+     * 1. Refreshes match repository.
+     * 2. Updates [uiListState] and [wifiWorkerState].
+     * 3. Sets [standingsApiState] to [Success] or [Error] on API request result.
+     */
+    private fun getRepoTeams() {
         try {
             viewModelScope.launch { teamsRepository.refresh() }
 

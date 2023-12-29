@@ -8,7 +8,22 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import okio.IOException
 
+/**
+ * Interceptor for handling network connectivity checks and adding a custom header to the
+ * outgoing requests. This class is designed to be used with OkHttp as an interceptor.
+ *
+ * @param context The [Context] used to access system services and check network connectivity.
+ */
 class NetworkConnectionInterceptor(val context: Context) : Interceptor {
+    /**
+     * Intercepts the request to check for network connectivity. If there is no connection,
+     * an [IOException] is thrown. Otherwise, a custom header ("X-Auth-Token") is added to
+     * the outgoing request.
+     *
+     * @param chain The [Interceptor.Chain] representing the request chain.
+     * @return The intercepted [Response] after processing.
+     * @throws IOException If there is no network connection.
+     */
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         if(!isConnected(context=context)){
             Log.i("retrofit", "there is no connection")
@@ -22,6 +37,12 @@ class NetworkConnectionInterceptor(val context: Context) : Interceptor {
 
     }
 
+    /**
+     * Checks if the device is currently connected to a network.
+     *
+     * @param context The [Context] used to access system services and check network connectivity.
+     * @return `true` if the device is connected to a network, `false` otherwise.
+     */
     fun isConnected(context: Context): Boolean {
         var result = false
         val connectivityManager =

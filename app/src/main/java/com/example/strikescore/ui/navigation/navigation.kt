@@ -9,6 +9,13 @@ import com.example.strikescore.ui.matchScreen.MatchOverview
 import com.example.strikescore.ui.standingsScreen.StandingsOverview
 import com.example.strikescore.ui.teamScreen.TeamOverview
 
+/**
+ * Composable navigation component for StrikeScore app using Jetpack Compose and Navigation.
+ *
+ * @param navController The [NavHostController] managing app navigation.
+ * @param modifier Optional [Modifier] for the [NavHost] component.
+ *
+ */
 @Composable
 fun navComponent(
     navController: NavHostController,

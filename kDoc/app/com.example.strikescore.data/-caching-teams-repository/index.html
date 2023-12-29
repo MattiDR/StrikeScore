@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>CachingTeamsRepository</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="app::com.example.strikescore.data/CachingTeamsRepository///PointingToDeclaration//492899073">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">app</a>/<a href="../index.html">com.example.strikescore.data</a>/<a href="index.html">CachingTeamsRepository</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Caching</span><wbr></wbr><span>Teams</span><wbr></wbr><span>Repository</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">class <a href="index.html">CachingTeamsRepository</a>(teamDao: <a href="../../com.example.strikescore.data.database.team/-team-dao/index.html">TeamDao</a>, teamApiService: <a href="../../com.example.strikescore.network.team/-team-api-service/index.html">TeamApiService</a>, context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>) : <a href="../-team-repository/index.html">TeamRepository</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">An implementation of the TeamRepository interface that provides caching and remote data retrieval using WorkManager.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Parameters</h2>
+              <div data-togglable="Parameters">
+                <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">teamDao</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The DAO (Data Access Object) for Team entities.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">teamApiService</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The service for fetching team data from a remote source.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">context</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">The application context.</p></div></div></div></div></div></div></div></div></div>
+              </div>
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="1120288931%2FConstructors%2F492899073" anchor-label="CachingTeamsRepository" id="1120288931%2FConstructors%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-caching-teams-repository.html">CachingTeamsRepository</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1120288931%2FConstructors%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">fun <a href="-caching-teams-repository.html">CachingTeamsRepository</a>(teamDao: <a href="../../com.example.strikescore.data.database.team/-team-dao/index.html">TeamDao</a>, teamApiService: <a href="../../com.example.strikescore.network.team/-team-api-service/index.html">TeamApiService</a>, context: <a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief ">The DAO (Data Access Object) for Team entities.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-1196897172%2FFunctions%2F492899073" anchor-label="deleteTeam" id="-1196897172%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="delete-team.html">deleteTeam</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1196897172%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="delete-team.html">deleteTeam</a>(team: <a href="../../com.example.strikescore.model/-team/index.html">Team</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1196897172%2FFunctions%2F492899073" anchor-label="deleteTeam" id="-1196897172%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-1196897172%2FFunctions%2F492899073" anchor-label="deleteTeam" id="-1196897172%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Deletes a team from the local database.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1244088526%2FFunctions%2F492899073" anchor-label="getTeam" id="-1244088526%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-team.html">getTeam</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1244088526%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-team.html">getTeam</a>(name: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span>&lt;<a href="../../com.example.strikescore.model/-team/index.html">Team</a>?&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1244088526%2FFunctions%2F492899073" anchor-label="getTeam" id="-1244088526%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-1244088526%2FFunctions%2F492899073" anchor-label="getTeam" id="-1244088526%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Retrieves a specific team by its name.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1699929611%2FFunctions%2F492899073" anchor-label="getTeams" id="-1699929611%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-teams.html">getTeams</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1699929611%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open override fun <a href="get-teams.html">getTeams</a>(): <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="../../com.example.strikescore.model/-team/index.html">Team</a>&gt;&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1699929611%2FFunctions%2F492899073" anchor-label="getTeams" id="-1699929611%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-1699929611%2FFunctions%2F492899073" anchor-label="getTeams" id="-1699929611%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Retrieves all teams from the data source.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1114036834%2FFunctions%2F492899073" anchor-label="insertTeam" id="-1114036834%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="insert-team.html">insertTeam</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1114036834%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="insert-team.html">insertTeam</a>(team: <a href="../../com.example.strikescore.model/-team/index.html">Team</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1114036834%2FFunctions%2F492899073" anchor-label="insertTeam" id="-1114036834%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-1114036834%2FFunctions%2F492899073" anchor-label="insertTeam" id="-1114036834%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Inserts a new team entry into the local database.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-360867830%2FFunctions%2F492899073" anchor-label="refresh" id="-360867830%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="refresh.html">refresh</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-360867830%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="refresh.html">refresh</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-360867830%2FFunctions%2F492899073" anchor-label="refresh" id="-360867830%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-360867830%2FFunctions%2F492899073" anchor-label="refresh" id="-360867830%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Refreshes the team data by scheduling a Wi-Fi dependent background task.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-251449970%2FFunctions%2F492899073" anchor-label="updateTeam" id="-251449970%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="update-team.html">updateTeam</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-251449970%2FFunctions%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><div class="symbol monospace">open suspend override fun <a href="update-team.html">updateTeam</a>(team: <a href="../../com.example.strikescore.model/-team/index.html">Team</a>)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-251449970%2FFunctions%2F492899073" anchor-label="updateTeam" id="-251449970%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="brief "><a data-name="-251449970%2FFunctions%2F492899073" anchor-label="updateTeam" id="-251449970%2FFunctions%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>Updates an existing team in the local database.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="1663878881%2FProperties%2F492899073" anchor-label="wifiWorkInfo" id="1663878881%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>
+                <div class="table-row" data-filterable-current=":app:dokkaHtml/release" data-filterable-set=":app:dokkaHtml/release">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="wifi-work-info.html">wifiWorkInfo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1663878881%2FProperties%2F492899073"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":app:dokkaHtml/release"><a data-name="1663878881%2FProperties%2F492899073" anchor-label="wifiWorkInfo" id="1663878881%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a><div class="symbol monospace">open override var <a href="wifi-work-info.html">wifiWorkInfo</a>: <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span>&lt;<a href="https://developer.android.com/reference/kotlin/androidx/work/WorkInfo.html">WorkInfo</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1663878881%2FProperties%2F492899073" anchor-label="wifiWorkInfo" id="1663878881%2FProperties%2F492899073" data-filterable-set=":app:dokkaHtml/release"></a>A flow of WorkInfo representing the status of the Wi-Fi notification background task.</div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2023 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

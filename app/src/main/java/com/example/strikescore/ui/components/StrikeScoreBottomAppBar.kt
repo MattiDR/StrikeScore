@@ -16,12 +16,27 @@ import androidx.compose.ui.res.vectorResource
 import com.example.strikescore.R
 import com.example.strikescore.ui.theme.StrikeScoreTheme
 
+/**
+ * Data class representing an item in the bottom navigation bar.
+ *
+ * @param title The title or label associated with the navigation item.
+ * @param selectedIcon The icon to be displayed when the item is selected.
+ * @param unselectedIcon The icon to be displayed when the item is not selected.
+ */
 data class BottomNavigationItem(
     val title: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
 )
 
+/**
+ * Composable function representing the bottom app bar of the StrikeScore app, including a navigation bar with
+ * items for teams, matches, and standings.
+ *
+ * @param goTeams Callback function to navigate to the Teams screen.
+ * @param goMatches Callback function to navigate to the Matches screen.
+ * @param goStandings Callback function to navigate to the Standings screen.
+ */
 @Composable
 fun StrikeScoreBottomAppBar(goTeams: () -> Unit, goMatches: () -> Unit, goStandings: () -> Unit) {
     StrikeScoreTheme {

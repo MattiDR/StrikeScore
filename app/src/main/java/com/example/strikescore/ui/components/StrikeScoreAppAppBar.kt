@@ -9,6 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 
+/**
+ * Composable function representing the top app bar of the StrikeScore app.
+ *
+ * @param currentScreenTitle The resource ID for the title of the current screen.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StrikeScoreAppAppBar(

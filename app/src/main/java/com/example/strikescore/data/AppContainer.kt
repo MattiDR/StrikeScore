@@ -12,21 +12,27 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
+/**
+ * Interface defining the dependencies needed by the app.
+ */
 interface AppContainer {
     val teamsRepository: TeamRepository
     val standingsRepository: StandingsRepository
     val matchRepository: MatchRepository
 }
 
-// container that takes care of dependencies
+/**
+ * Default implementation of [AppContainer] providing the necessary dependencies.
+ */
 class DefaultAppContainer(private val context: Context) : AppContainer {
 
+    // Network dependencies
     private val networkCheck = NetworkConnectionInterceptor(context)
     private val client = OkHttpClient.Builder()
         .addInterceptor(networkCheck)
         .build()
 
-
+    // Retrofit configuration
     private val baseUrl = "https://api.football-data.org/v4/competitions/PL/"
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(
@@ -36,6 +42,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         .client(client)
         .build()
 
+    // Retrofit services
     private val retrofitTeamService: TeamApiService by lazy {
         retrofit.create(TeamApiService::class.java)
     }
@@ -47,11 +54,7 @@ class DefaultAppContainer(private val context: Context) : AppContainer {
         retrofit.create(MatchApiService::class.java)
     }
 
-    /*
-    override val tasksRepository: TasksRepository by lazy {
-        ApiTasksRepository(retrofitService)
-    }
-    */
+    // Repositories
     override val teamsRepository: TeamRepository by lazy {
         CachingTeamsRepository(StrikeScoreDb.getDatabase(context = context).teamDao(), retrofitTeamService, context)
     }

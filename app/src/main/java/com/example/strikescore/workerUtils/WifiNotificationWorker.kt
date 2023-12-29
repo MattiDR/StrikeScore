@@ -18,6 +18,16 @@ import kotlinx.coroutines.withContext
 
 
 private const val TAG = "WithWifiWorker"
+
+/**
+ * Worker class for handling background tasks related to Wi-Fi notifications.
+ *
+ * This worker is responsible for initiating and managing notifications related to Wi-Fi status.
+ * It extends [CoroutineWorker], providing a coroutine-based implementation for background work.
+ *
+ * @param context The application context.
+ * @param params The parameters for the worker.
+ */
 class WifiNotificationWorker(context : Context, params: WorkerParameters): CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {
         makeStatusNotification("starting the worker", applicationContext)
@@ -34,6 +44,14 @@ class WifiNotificationWorker(context : Context, params: WorkerParameters): Corou
 }
 
 
+/**
+ * Creates and displays a status notification with the given message.
+ *
+ * This function is used to show a notification with a specific message.
+ *
+ * @param message The message to be displayed in the notification.
+ * @param context The application context.
+ */
 fun makeStatusNotification(message: String, context: Context) {
 
     // Make a channel if necessary

@@ -20,6 +20,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import java.io.IOException
 
+
+/**
+ * ViewModel for the Standings Overview screen.
+ *
+ * @param standingsRepository The repository responsible for handling standings-related data.
+ */
 class StandingsOverviewViewModel(private val standingsRepository: StandingsRepository) : ViewModel() {
     // use StateFlow (Flow: emits current state + any updates)
     /*
@@ -46,7 +52,7 @@ class StandingsOverviewViewModel(private val standingsRepository: StandingsRepos
     init {
 
         // initializes the uiListState
-        getRepoTasks()
+        getRepoStandings()
         Log.i("vm inspection", "TeamOverviewViewModel init")
 
 
@@ -54,8 +60,16 @@ class StandingsOverviewViewModel(private val standingsRepository: StandingsRepos
     }
 
 
-    // this
-    private fun getRepoTasks() {
+
+
+    /**
+     * updates repository standings and UI states based on the specified date.
+     *
+     * 1. Refreshes match repository.
+     * 2. Updates [uiListState] and [wifiWorkerState].
+     * 3. Sets [standingsApiState] to [Success] or [Error] on API request result.
+     */
+    private fun getRepoStandings() {
         try {
             viewModelScope.launch { standingsRepository.refresh() }
 

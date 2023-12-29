@@ -53,6 +53,12 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.Calendar
 
+/**
+ * Composable function representing the match overview screen.
+ *
+ * @param modifier Modifier for styling the [MatchOverview] composable.
+ * @param matchOverviewViewModel [MatchOverviewViewModel] used to manage the UI state for the match overview.
+ */
 @Composable
 fun MatchOverview(
     modifier: Modifier = Modifier,
@@ -116,6 +122,13 @@ fun MatchOverview(
         }
     }
 }
+/**
+ * Composable function representing the list of matches in the match overview screen.
+ *
+ * @param modifier Modifier for styling the [MatchListComponent] composable.
+ * @param matchOverviewState [MatchOverviewState] containing information about the match overview screen state.
+ * @param matchListState [MatchListState] containing the list of matches and related state.
+ */
 @Composable
 fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchOverviewState, matchListState: MatchListState) {
     val lazyListState = rememberLazyListState()
@@ -142,7 +155,14 @@ fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchO
         }
     }
 }
-
+/**
+ * Composable function representing the date picker row in the match overview screen.
+ *
+ * @param dateItems List of [DateItem] representing the dates to be displayed in the row.
+ * @param selectedDate Selected date to highlight in the row.
+ * @param onDateSelected Callback when a date is selected.
+ * @param lazyListState [LazyListState] used for controlling the scroll state of the date picker row.
+ */
 @Composable
 fun DatePickerRow(
     dateItems: List<DateItem>,

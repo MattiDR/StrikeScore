@@ -30,6 +30,12 @@ import coil.request.ImageRequest
 import com.example.strikescore.R
 import com.example.strikescore.model.Standings
 
+/**
+ * Composable function representing a UI element for displaying information about a team's standings.
+ *
+ * @param modifier Modifier for styling the [StandingsItem] composable.
+ * @param standing The [Standings] object containing information about the team's standings.
+ */
 @Composable
 fun StandingsItem(
     modifier: Modifier = Modifier,
