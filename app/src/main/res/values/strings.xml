@@ -3,4 +3,5 @@
     <string name="team_title">Teams</string>
     <string name="standings_title">Standings</string>
     <string name="matches_title">Matches</string>
+    <string name="navigation_rail">Navigate between items here</string>
 </resources>
