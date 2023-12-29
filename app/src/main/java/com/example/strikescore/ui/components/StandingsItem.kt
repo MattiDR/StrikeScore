@@ -38,7 +38,7 @@ fun StandingsItem(
     }.build()
 
     Card(
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondary),
         shape = RectangleShape,
         modifier = modifier
             .fillMaxWidth()
@@ -61,7 +61,7 @@ fun StandingsItem(
                 Text(
                     text = standing.position.toString(),
                     style = MaterialTheme.typography.headlineSmall,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = MaterialTheme.colorScheme.onSecondary,
                 )
 
                 //add spacer
@@ -86,7 +86,7 @@ fun StandingsItem(
                     Text(
                         text = standing.team.name,
                         style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.onSecondary,
                     )
             }
 
@@ -94,6 +94,7 @@ fun StandingsItem(
 
 
                 Text(
+                    color = MaterialTheme.colorScheme.onSecondary,
                     modifier = Modifier
                         .padding(8.dp),
                     text = standing.points.toString(),

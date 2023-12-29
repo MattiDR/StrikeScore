@@ -3,6 +3,7 @@ package com.example.strikescore
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.strikescore.ui.theme.StrikeScoreTheme
@@ -11,7 +12,6 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import com.example.strikescore.ui.util.StrikeScoreNavigationType
 import com.example.strikescore.ui.StrikeScoreApp
-import com.example.strikescore.ui.theme.backgroundTeamItem
 
 data class BottomNavigationItem(
     val title: String,
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             StrikeScoreTheme {
                 Surface(
-                    color = backgroundTeamItem,
+                    color = MaterialTheme.colorScheme.background,
                 ){
                     val windowSize = calculateWindowSizeClass(activity = this)
                     when (windowSize.widthSizeClass){

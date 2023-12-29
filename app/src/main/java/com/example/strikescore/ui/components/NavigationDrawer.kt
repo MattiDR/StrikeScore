@@ -3,6 +3,7 @@ package com.example.strikescore.ui.components
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.Text
@@ -29,6 +30,7 @@ fun NavigationDrawerContent(
                 selected = selectedDestination?.route == navItem.name,
                 label = {
                     Text(
+                        color = MaterialTheme.colorScheme.onPrimary,
                         text = navItem.name,
                         modifier = Modifier.padding(horizontal = dimensionResource(R.dimen.drawer_padding_header)),
                     )

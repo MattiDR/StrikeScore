@@ -69,7 +69,7 @@ fun StrikeScoreApp(
             }
         }) {
             Scaffold(
-                containerColor = Color.Transparent,
+                containerColor = MaterialTheme.colorScheme.background,
                 topBar = {
                     StrikeScoreAppAppBar(
                         currentScreenTitle = currentScreenTitle,
@@ -87,7 +87,7 @@ fun StrikeScoreApp(
 
     }else if(navigationType == StrikeScoreNavigationType.BOTTOM_NAVIGATION) {
         Scaffold(
-            containerColor = Color.Transparent,
+            containerColor = MaterialTheme.colorScheme.background,
             topBar = {
                 StrikeScoreAppAppBar(
                     currentScreenTitle = currentScreenTitle,

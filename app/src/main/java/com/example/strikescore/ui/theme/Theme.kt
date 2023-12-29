@@ -16,15 +16,23 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkGreen,
+    onPrimary = onDarkGreen,
+    background = darkBackground,
+    secondary = DarkGray,
+    onSecondary = onDarkGray,
+    tertiary = selectedDarkGreen,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Green,
+    onPrimary = onGreen,
+    background = lightBackground,
+    secondary = White,
+    onSecondary = onWhite,
+    tertiary = selectedGreen,
+
+
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -41,7 +49,7 @@ private val LightColorScheme = lightColorScheme(
 fun StrikeScoreTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -58,7 +66,8 @@ fun StrikeScoreTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            window.navigationBarColor = colorScheme.primary.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 

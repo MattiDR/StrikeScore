@@ -2,16 +2,20 @@ package com.example.strikescore.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val Green = Color(0xFF85b034)
+val onGreen = Color.White
+val White = Color.White
+val onWhite = Color.Black
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val lightBackground = Color(0xFFDCECBF)
 
-val backgroundBottomNavigationBar = Color(0xFF85b034)
-val backgroundTopBar = Color(0xFF85b034)
-val backgroundSelectedBottomNavigationBar = Color(0xFF5f7d25)
+val selectedGreen = Color(0xFF5f7d25)
 
-val backgroundTeamItem = Color(0xFFDCECBF)
+val DarkGreen = Color(0xFF304012)
+val onDarkGreen = Color.White
+val DarkGray = Color(0xFF333333)
+val onDarkGray = Color.White
+
+val darkBackground = Color(0xFF1A1A1A)
+
+val selectedDarkGreen = Color(0xFF254014)

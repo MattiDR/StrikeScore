@@ -1,6 +1,7 @@
 package com.example.strikescore.ui.components
 
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
@@ -16,23 +17,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavDestination
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
-import com.example.strikescore.ui.theme.backgroundBottomNavigationBar
-import com.example.strikescore.ui.theme.backgroundSelectedBottomNavigationBar
 
 @Composable
 fun StrikeScoreNavigationRail(selectedDestination: NavDestination?, onTabPressed: (String) -> Unit, modifier: Modifier = Modifier) {
-    NavigationRail(modifier = modifier, containerColor = backgroundBottomNavigationBar) {
+    NavigationRail(modifier = modifier, containerColor = MaterialTheme.colorScheme.primary) {
         for (navItem in StrikeScoreOverviewScreen.values()) {
             NavigationRailItem(
                 colors = NavigationRailItemDefaults.colors(
-                    indicatorColor = backgroundSelectedBottomNavigationBar
+                    indicatorColor = MaterialTheme.colorScheme.tertiary,
                 ),
                 selected = selectedDestination?.route == navItem.name ,
                 onClick = { onTabPressed(navItem.name) },
                 icon = {
                     Icon(
                         imageVector = ImageVector.vectorResource(navItem.icon),
-                        tint = Color.White,
+                        tint = MaterialTheme.colorScheme.onPrimary,
                         contentDescription = navItem.name,
                     )
                 },

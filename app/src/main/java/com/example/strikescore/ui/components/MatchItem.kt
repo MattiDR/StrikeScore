@@ -46,7 +46,7 @@ fun MatchItem(
 
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = Color.White,
+            containerColor = MaterialTheme.colorScheme.secondary,
         ),
         modifier = modifier
             .fillMaxWidth()
@@ -90,18 +90,21 @@ fun MatchItem(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
                         Text(
+                            color = MaterialTheme.colorScheme.onSecondary,
                         text = match.score.fullTime.home.toString(),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
                                 .padding(8.dp),
                         )
                         Text(
+                            color = MaterialTheme.colorScheme.onSecondary,
                             text = "-",
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
                                 .padding(8.dp),
                         )
                         Text(
+                            color = MaterialTheme.colorScheme.onSecondary,
                         text = match.score.fullTime.away.toString(),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
@@ -111,6 +114,7 @@ fun MatchItem(
 
                 }else if(match.status.equals("POSTPONED")){
                     Text(
+                        color = MaterialTheme.colorScheme.onSecondary,
                         text = match.status,
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier
@@ -120,6 +124,7 @@ fun MatchItem(
                 }
                 else{
                     Text(
+                        color = MaterialTheme.colorScheme.onSecondary,
                         text = convertToBelgianTime(match.utcDate).split("T")[1].substring(0,5),
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier

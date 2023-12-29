@@ -31,7 +31,6 @@ import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.strikescore.model.Team
-import com.example.strikescore.ui.theme.backgroundTeamItem
 
 
 @SuppressLint("SuspiciousIndentation")
@@ -47,7 +46,7 @@ fun TeamItem(
 
         Card(
             colors = CardDefaults.cardColors(
-                containerColor = Color.White,
+                containerColor = MaterialTheme.colorScheme.secondary,
             ),
             modifier = modifier
                 .fillMaxWidth()
@@ -78,13 +77,13 @@ fun TeamItem(
                     Text(
                         text = team.name,
                         style = MaterialTheme.typography.headlineSmall,
-                        color = MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.onSecondary,
                     )
 
                     Text(
                         text = team.tla,
                         style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.onSecondary,
                     )
 
 
