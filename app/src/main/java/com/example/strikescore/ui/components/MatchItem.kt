@@ -91,17 +91,31 @@ fun MatchItem(
                     ){
                         Text(
                         text = match.score.fullTime.home.toString(),
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.headlineMedium,
+                            modifier = Modifier
+                                .padding(8.dp),
+                        )
+                        Text(
+                            text = "-",
+                            style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
                                 .padding(8.dp),
                         )
                         Text(
                         text = match.score.fullTime.away.toString(),
-                            style = MaterialTheme.typography.labelLarge,
+                            style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
                                 .padding(8.dp),
                         )
                     }
+
+                }else if(match.status.equals("POSTPONED")){
+                    Text(
+                        text = match.status,
+                        style = MaterialTheme.typography.labelLarge,
+                        modifier = Modifier
+                            .padding(8.dp),
+                    )
 
                 }
                 else{

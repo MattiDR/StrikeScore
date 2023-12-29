@@ -52,7 +52,7 @@ fun TaskListComponent(modifier: Modifier = Modifier, teamOverviewState: TeamOver
     val lazyListState = rememberLazyListState()
     LazyColumn(state = lazyListState) {
         items(teamListState.teamList.size) {
-            TeamItem(name = teamListState.teamList[it].name, crest = teamListState.teamList[it].crest)
+            TeamItem(team = teamListState.teamList[it])
         }
     }
     val coroutineScope = rememberCoroutineScope()

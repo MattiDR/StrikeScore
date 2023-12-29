@@ -99,13 +99,7 @@ fun StandingsItem(
                     text = standing.points.toString(),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Right,
                 )
-//            Text(text = standing.playedGames.toString())
-//            Text(text = standing.won.toString())
-//            Text(text = standing.draw.toString())
-//            Text(text = standing.lost.toString())
-//            Text(text = standing.goalsFor.toString())
-//            Text(text = standing.goalsAgainst.toString())
-//            Text(text = standing.goalDifference.toString())
+
 
         }
     }

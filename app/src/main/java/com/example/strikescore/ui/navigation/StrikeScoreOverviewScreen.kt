@@ -13,7 +13,7 @@ import com.example.strikescore.R
 
 
 enum class StrikeScoreOverviewScreen(@StringRes val title: Int, @DrawableRes val icon: Int) {
-    Matches(title = R.string.matches_title, icon = R.drawable.ball),
     Teams(title = R.string.team_title, icon = R.drawable.teams),
+    Matches(title = R.string.matches_title, icon = R.drawable.ball),
     Standings(title= R.string.standings_title, icon = R.drawable.standings)
 }

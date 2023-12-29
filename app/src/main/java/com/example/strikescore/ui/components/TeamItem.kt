@@ -30,6 +30,7 @@ import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.example.strikescore.model.Team
 import com.example.strikescore.ui.theme.backgroundTeamItem
 
 
@@ -37,8 +38,7 @@ import com.example.strikescore.ui.theme.backgroundTeamItem
 @Composable
 fun TeamItem(
     modifier: Modifier = Modifier,
-    name : String,
-    crest: String,
+    team: Team,
 ) {
 
     val imgLoader = ImageLoader.Builder(LocalContext.current).components {
@@ -62,22 +62,34 @@ fun TeamItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 AsyncImage(
-                       model = ImageRequest.Builder(LocalContext.current).data(crest).crossfade(true).build(),
+                       model = ImageRequest.Builder(LocalContext.current).data(team.crest).crossfade(true).build(),
                        contentDescription = "crest",
                        imageLoader = imgLoader,
-                          modifier = Modifier.size(100.dp)
-                            .padding(8.dp),
+                          modifier = Modifier
+                              .size(100.dp)
+                              .padding(8.dp),
                 )
 
                 Spacer(
                     modifier = Modifier.size(16.dp)
                 )
 
-                Text(
-                    text = name,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
-                )
+                Column {
+                    Text(
+                        text = team.name,
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+
+                    Text(
+                        text = team.tla,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+
+
+                }
+
 
             }
         }
