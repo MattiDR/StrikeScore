@@ -104,22 +104,3 @@ fun StandingsItem(
         }
     }
 }
-
-// The Standings data class should look something like this:
-data class Standings(
-    val position: Int,
-    val team: Team,
-    val gamesPlayed: Int,
-    val points: Int,
-    val wins: Int,
-    val draws: Int,
-    val losses: Int,
-    val goalsFor: Int,
-    val goalsAgainst: Int,
-    val goalDifference: Int
-)
-
-data class Team(
-    val name: String
-    // ... include other team-related data if necessary
-)
