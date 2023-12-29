@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_small">8dp</dimen>
+    <dimen name="pd_null">0dp</dimen>
+    <dimen name="pd_ten">10dp</dimen>
+    <dimen name="padding_xsmall">4dp</dimen>
     <dimen name="smallSpacer">16dp</dimen>
     <dimen name="mediumSpacer">24dp</dimen>
     <dimen name="mediumPadding">16dp</dimen>
+    <dimen name="medium_plus_Padding">16dp</dimen>
     <dimen name="largePadding">24dp</dimen>
     <dimen name="cardCornerRadius">28dp</dimen>
     <dimen name="drawer_width">160dp</dimen>
+    <dimen name="box_size_medium">100dp</dimen>
+    <dimen name="box_size_small">50dp</dimen>
     <dimen name="drawer_padding_content">8dp</dimen>
     <dimen name="drawer_padding_header">8dp</dimen>
 </resources>

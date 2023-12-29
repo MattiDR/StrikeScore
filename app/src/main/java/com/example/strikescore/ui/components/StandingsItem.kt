@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
@@ -50,14 +51,14 @@ fun StandingsItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .animateContentSize()
-                .padding(16.dp),
+                .padding(dimensionResource(R.dimen.padding_small)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(
                 modifier = Modifier
                     .animateContentSize()
-                    .padding(8.dp),
+                    .padding(dimensionResource(R.dimen.smallSpacer)),
                 verticalAlignment = Alignment.CenterVertically,
             ){
                 Text(
@@ -68,7 +69,7 @@ fun StandingsItem(
 
                 //add spacer
                 Spacer(
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(dimensionResource(R.dimen.smallSpacer))
                 )
 
                 AsyncImage(
@@ -76,13 +77,13 @@ fun StandingsItem(
                         contentDescription = stringResource(R.string.standingscrest),
                         imageLoader = imgLoader,
                         modifier = Modifier
-                            .size(50.dp)
-                            .padding(8.dp),
+                            .size(dimensionResource(R.dimen.box_size_small))
+                            .padding(dimensionResource(R.dimen.padding_small)),
                     )
 
                 //add spacer
                 Spacer(
-                    modifier = Modifier.size(8.dp)
+                    modifier = Modifier.size(dimensionResource(R.dimen.padding_small))
                 )
 
                     Text(
@@ -98,7 +99,7 @@ fun StandingsItem(
                 Text(
                     color = MaterialTheme.colorScheme.onSecondary,
                     modifier = Modifier
-                        .padding(8.dp),
+                        .padding(dimensionResource(R.dimen.padding_small)),
                     text = standing.points.toString(),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Right,
                 )

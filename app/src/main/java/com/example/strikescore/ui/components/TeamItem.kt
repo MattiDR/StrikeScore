@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
@@ -52,13 +53,13 @@ fun TeamItem(
             ),
             modifier = modifier
                 .fillMaxWidth()
-                .padding(8.dp)
-                .shadow(8.dp, shape = RoundedCornerShape(8.dp)),
+                .padding(dimensionResource(R.dimen.padding_small))
+                .shadow(dimensionResource(R.dimen.padding_small), shape = RoundedCornerShape(dimensionResource(R.dimen.padding_small))),
         ) {
             Row(
                 modifier = Modifier
                     .animateContentSize()
-                    .padding(16.dp),
+                    .padding(dimensionResource(R.dimen.smallSpacer)),
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -67,12 +68,12 @@ fun TeamItem(
                        contentDescription = stringResource(R.string.teamcrest),
                        imageLoader = imgLoader,
                           modifier = Modifier
-                              .size(100.dp)
-                              .padding(8.dp),
+                              .size(dimensionResource(R.dimen.box_size_medium))
+                              .padding(dimensionResource(R.dimen.padding_small)),
                 )
 
                 Spacer(
-                    modifier = Modifier.size(16.dp)
+                    modifier = Modifier.size(dimensionResource(R.dimen.smallSpacer))
                 )
 
                 Column {

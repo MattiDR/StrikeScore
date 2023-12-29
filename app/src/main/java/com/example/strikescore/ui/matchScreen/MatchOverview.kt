@@ -28,6 +28,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -154,19 +155,19 @@ fun DatePickerRow(
             val isSelected = selectedDate?.dayOfMonth == dateItem.dayOfMonth
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .padding(horizontal = dimensionResource(R.dimen.padding_small), vertical = dimensionResource(R.dimen.padding_xsmall))
                     .clickable { onDateSelected(dateItem) },
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Box(
                     modifier = Modifier
-                        .padding(4.dp)
-                        .shadow(if (isSelected) 4.dp else 0.dp, RoundedCornerShape(10.dp))
+                        .padding(dimensionResource(R.dimen.padding_xsmall))
+                        .shadow(if (isSelected) dimensionResource(R.dimen.padding_xsmall) else dimensionResource(R.dimen.pd_null), RoundedCornerShape(dimensionResource(R.dimen.pd_ten)))
                         .background(
                             color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
-                            shape = RoundedCornerShape(10.dp)
+                            shape = RoundedCornerShape(dimensionResource(R.dimen.pd_ten))
                         )
-                        .padding(horizontal = 16.dp, vertical = 8.dp)
+                        .padding(horizontal = dimensionResource(R.dimen.smallSpacer), vertical = dimensionResource(R.dimen.padding_small))
                 ) {
                     Text(
                         text = dateItem.dayOfMonth.toString(),

@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.ImageLoader
@@ -52,8 +53,11 @@ fun MatchItem(
         ),
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp)
-            .shadow(8.dp, shape = RoundedCornerShape(8.dp)),
+            .padding(dimensionResource(R.dimen.padding_small))
+            .shadow(
+                dimensionResource(R.dimen.padding_small),
+                shape = RoundedCornerShape(dimensionResource(R.dimen.padding_small))
+            ),
     ) {
 
 
@@ -61,29 +65,29 @@ fun MatchItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .animateContentSize()
-                .padding(16.dp),
+                .padding(dimensionResource(R.dimen.smallSpacer)),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
 
             Box(
                 modifier = modifier
-                    .size(100.dp)
-                    .padding(8.dp),
+                    .size(dimensionResource(R.dimen.box_size_medium))
+                    .padding(dimensionResource(R.dimen.smallSpacer)),
             ){
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(match.homeTeam.crest).crossfade(true).build(),
                     contentDescription = stringResource(R.string.hometeamcrest),
                     imageLoader = imgLoader,
                     modifier = Modifier
-                        .size(100.dp)
-                        .padding(8.dp),
+                        .size(dimensionResource(R.dimen.box_size_medium))
+                        .padding(dimensionResource(R.dimen.smallSpacer)),
                 )
             }
 
             Box(
                 modifier = modifier
-                    .padding(8.dp),
+                    .padding(dimensionResource(R.dimen.smallSpacer)),
             ){
 
                 if(match.status.equals("FINISHED")){
@@ -96,21 +100,21 @@ fun MatchItem(
                         text = match.score.fullTime.home.toString(),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
-                                .padding(8.dp),
+                                .padding(dimensionResource(R.dimen.smallSpacer)),
                         )
                         Text(
                             color = MaterialTheme.colorScheme.onSecondary,
-                            text = "-",
+                            text = stringResource(R.string.score_spacer),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
-                                .padding(8.dp),
+                                .padding(dimensionResource(R.dimen.smallSpacer)),
                         )
                         Text(
                             color = MaterialTheme.colorScheme.onSecondary,
                         text = match.score.fullTime.away.toString(),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
-                                .padding(8.dp),
+                                .padding(dimensionResource(R.dimen.smallSpacer)),
                         )
                     }
 
@@ -120,7 +124,7 @@ fun MatchItem(
                         text = match.status,
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier
-                            .padding(8.dp),
+                            .padding(dimensionResource(R.dimen.smallSpacer)),
                     )
 
                 }
@@ -130,7 +134,7 @@ fun MatchItem(
                         text = convertToBelgianTime(match.utcDate).split("T")[1].substring(0,5),
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier
-                            .padding(8.dp),
+                            .padding(dimensionResource(R.dimen.smallSpacer)),
                     )
                 }
 
@@ -138,16 +142,16 @@ fun MatchItem(
 
             Box(
                 modifier = modifier
-                    .size(100.dp)
-                    .padding(8.dp),
+                    .size(dimensionResource(R.dimen.box_size_medium))
+                    .padding(dimensionResource(R.dimen.smallSpacer)),
             ){
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(match.awayTeam.crest).crossfade(true).build(),
                     contentDescription = stringResource(R.string.awayteamcrest),
                     imageLoader = imgLoader,
                     modifier = Modifier
-                        .size(100.dp)
-                        .padding(8.dp),
+                        .size(dimensionResource(R.dimen.box_size_medium))
+                        .padding(dimensionResource(R.dimen.smallSpacer)),
                 )
             }
 
