@@ -1,4 +1,4 @@
-package com.example.strikescore
+package com.example.strikescore.dao
 
 import android.content.Context
 import androidx.room.Room
@@ -8,7 +8,6 @@ import com.example.strikescore.data.database.team.TeamDao
 import com.example.strikescore.data.database.team.asDbTeam
 import com.example.strikescore.data.database.team.asDomainTeam
 import com.example.strikescore.data.database.team.asDomainTeams
-import com.example.strikescore.fake.FakeTeamDataSource
 import junit.framework.TestCase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
@@ -16,11 +15,8 @@ import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
 import java.io.IOException
 
-@RunWith(RobolectricTestRunner::class)
 class TeamDaoTest {
 
     private lateinit var teamDao: TeamDao
@@ -48,32 +44,32 @@ class TeamDaoTest {
     @Test
     @Throws(Exception::class)
     fun DaoInsert_insertTeamIntoDb() = runBlocking{
-        teamDao.insert(FakeTeamDataSource.teams[0].asDbTeam())
+        teamDao.insert(FakeDataSource.teams[0].asDbTeam())
         val team = teamDao.getAllItems().map {
             it.asDomainTeams()
         }.first()
-        TestCase.assertEquals(FakeTeamDataSource.teams[0], team[0])
+        TestCase.assertEquals(FakeDataSource.teams[0], team[0])
     }
 
     @Test
     @Throws(Exception::class)
     fun DaoGetAllItems_getAllTeamsFromDb() = runBlocking{
-        FakeTeamDataSource.teams.forEach {
+        FakeDataSource.teams.forEach {
             teamDao.insert(it.asDbTeam())
         }
         val teams = teamDao.getAllItems().map {
             it.asDomainTeams()
         }.first()
-        TestCase.assertEquals(FakeTeamDataSource.teams, teams)
+        TestCase.assertEquals(FakeDataSource.teams, teams)
     }
 
     @Test
     @Throws(Exception::class)
     fun DaoGetByName_getTeamsFromDb() = runBlocking{
-        FakeTeamDataSource.teams.forEach {
+        FakeDataSource.teams.forEach {
             teamDao.insert(it.asDbTeam())
         }
         val team = teamDao.getItem(name).first().asDomainTeam()
-        TestCase.assertEquals(FakeTeamDataSource.teams.first { it.name == name }, team)
+        TestCase.assertEquals(FakeDataSource.teams.first { it.name == name }, team)
     }
 }

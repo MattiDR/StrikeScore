@@ -86,7 +86,7 @@ fun StrikeScoreBottomAppBar(goTeams: () -> Unit, goMatches: () -> Unit, goStandi
                             imageVector = if (index == selectedItemIndex) {
                                 item.selectedIcon
                             } else item.unselectedIcon,
-                            contentDescription = item.title
+                            contentDescription =  "navigate to " + item.title
                         )
                     }
                 )
