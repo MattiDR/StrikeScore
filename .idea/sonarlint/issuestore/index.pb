@@ -996,3 +996,17 @@ Aapp/src/androidTest/java/com/example/strikescore/MatchItemTest.kt,5\5\556ff065
 Papp/src/androidTest/java/com/example/strikescore/ui/navigation/NavigationTest.kt,a\c\acaac6593c2f2006c32670283c4f3fd80979303e
 r
 Bapp/src/androidTest/java/com/example/strikescore/NavigationTest.kt,0\7\07e06cd46e4dcdd19e613782cc9bf96ce8a7dbfd
+u
+Eapp/src/test/java/com/example/strikescore/fake/FakeMatchDataSource.kt,4\4\448a59cf9b7db280852c863c6c46c2a1e6511d09
+t
+Dapp/src/test/java/com/example/strikescore/fake/FakeTeamDataSource.kt,5\f\5f5a38a08793469d50f6a95aca449aa980919ef1
+p
+@app/src/test/java/com/example/strikescore/robolectric.properties,d\1\d1dc0ac59280c763c99c60b7cd257dd369597e5f
+h
+8app/src/test/java/com/example/strikescore/TeamDaoTest.kt,8\a\8a287415aec4292d58ebfcba18a31dcd28151437
+x
+Happ/src/test/java/com/example/strikescore/fake/FakeStandingDataSource.kt,9\0\90d76bcddba1a40a18e6d3ca2bc24ef07a9d8b68
+l
+<app/src/test/java/com/example/strikescore/StandingDaoTest.kt,f\d\fd41b1da57714e987592dec23a74aa21d045e0dc
+m
+=app/src/test/java/com/example/strikescore/StandingsDaoTest.kt,a\d\adcff3c68fb70e2ee784e0f8f45b32ce00656c24
