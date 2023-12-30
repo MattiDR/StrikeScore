@@ -1,7 +1,5 @@
 package com.example.strikescore.model
 
-import java.util.Date
-
 /**
  * Represents a Match in the StrikeScore application.
  *

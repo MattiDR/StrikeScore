@@ -1,7 +1,5 @@
 package com.example.strikescore.ui.components
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale

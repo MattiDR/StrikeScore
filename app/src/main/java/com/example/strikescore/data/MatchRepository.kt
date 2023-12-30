@@ -12,18 +12,13 @@ import com.example.strikescore.data.database.matches.asDbMatch
 import com.example.strikescore.data.database.matches.asDomainMatch
 import com.example.strikescore.data.database.matches.asDomainMatches
 import com.example.strikescore.model.Match
-import com.example.strikescore.model.Standings
 import com.example.strikescore.network.match.MatchApiService
 import com.example.strikescore.network.match.asDomainObjects
 import com.example.strikescore.network.match.getMatchesAsFlow
-import com.example.strikescore.network.standings.StandingsApiService
-import com.example.strikescore.network.standings.asDomainObjects
-import com.example.strikescore.network.standings.getStandingsAsFlow
 import com.example.strikescore.workerUtils.WifiNotificationWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.runBlocking
 import java.net.SocketTimeoutException
 import java.util.UUID
 

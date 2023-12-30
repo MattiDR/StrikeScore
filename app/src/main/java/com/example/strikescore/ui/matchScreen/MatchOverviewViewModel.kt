@@ -1,8 +1,6 @@
 package com.example.strikescore.ui.matchScreen
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -36,7 +34,7 @@ class MatchOverviewViewModel(private val matchRepository: MatchRepository) : Vie
     * Note: uiState is a cold flow. Changes don't come in from above unless a
     * refresh is called...
     * */
-    private val _uiState = MutableStateFlow(MatchOverviewState(/*TaskSampler.getAll()*/))
+    private val _uiState = MutableStateFlow(MatchOverviewState())
     val uiState: StateFlow<MatchOverviewState> = _uiState.asStateFlow()
 
     /*

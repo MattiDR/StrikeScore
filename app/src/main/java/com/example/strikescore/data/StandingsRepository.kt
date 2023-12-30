@@ -100,7 +100,6 @@ class CachingStandingsRepository(private val standingsDao: StandingsDao, private
         return standingsDao.getAllItems().map {
             it.asDomainStandings()
         }.onEach {
-            // todo: check when refresh is called (why duplicates??)
             if (it.isEmpty()) {
                 refresh()
             }

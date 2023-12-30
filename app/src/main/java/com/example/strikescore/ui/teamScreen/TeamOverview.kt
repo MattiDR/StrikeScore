@@ -13,10 +13,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.strikescore.R
-import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.TeamItem
 import kotlinx.coroutines.launch
 
@@ -38,14 +36,7 @@ fun TeamOverview(
     // use the ApiState
     val teamApiState = teamOverviewViewModel.teamApiState
 
-    //use the workerstate
-    val workerState by teamOverviewViewModel.wifiWorkerState.collectAsState()
     Column {
-//        when(workerState.workerInfo?.state){
-//            null -> Text("state unknown")
-//            else -> Text(workerState.workerInfo?.state!!.name)
-//        }
-
         Box(modifier = modifier) {
             when (teamApiState) {
                 is TeamApiState.Loading -> Text(stringResource(R.string.loading))
@@ -64,7 +55,7 @@ fun TeamOverview(
  * @param teamListState The state of the team list.
  */
 @Composable
-fun TaskListComponent(modifier: Modifier = Modifier, teamOverviewState: TeamOverviewState, teamListState: TeamListState) {
+fun TaskListComponent(teamOverviewState: TeamOverviewState, teamListState: TeamListState) {
     val lazyListState = rememberLazyListState()
     LazyColumn(state = lazyListState) {
         items(teamListState.teamList.size) {

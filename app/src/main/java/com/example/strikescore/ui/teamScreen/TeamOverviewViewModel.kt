@@ -12,14 +12,12 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.strikescore.StrikeScoreApplication
 import com.example.strikescore.data.TeamRepository
-import com.example.strikescore.model.Team
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -35,7 +33,7 @@ class TeamOverviewViewModel(private val teamsRepository: TeamRepository) : ViewM
     * Note: uiState is a cold flow. Changes don't come in from above unless a
     * refresh is called...
     * */
-    private val _uiState = MutableStateFlow(TeamOverviewState(/*TaskSampler.getAll()*/))
+    private val _uiState = MutableStateFlow(TeamOverviewState())
     val uiState: StateFlow<TeamOverviewState> = _uiState.asStateFlow()
 
     /*

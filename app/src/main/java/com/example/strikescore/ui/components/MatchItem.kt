@@ -4,9 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -19,22 +17,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.strikescore.R
 import com.example.strikescore.model.Match
-import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-
 
 /**
  * Composable function representing a UI element for displaying information about a [Match].
@@ -80,7 +74,7 @@ fun MatchItem(
             Box(
                 modifier = modifier
                     .size(dimensionResource(R.dimen.box_size_medium))
-                    .padding(dimensionResource(R.dimen.smallSpacer)),
+                    .padding(dimensionResource(R.dimen.padding_small)),
             ){
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(match.homeTeam.crest).crossfade(true).build(),
@@ -88,16 +82,16 @@ fun MatchItem(
                     imageLoader = imgLoader,
                     modifier = Modifier
                         .size(dimensionResource(R.dimen.box_size_medium))
-                        .padding(dimensionResource(R.dimen.smallSpacer)),
+                        .padding(dimensionResource(R.dimen.padding_small)),
                 )
             }
 
             Box(
                 modifier = modifier
-                    .padding(dimensionResource(R.dimen.smallSpacer)),
+                    .padding(dimensionResource(R.dimen.padding_small)),
             ){
 
-                if(match.status.equals("FINISHED")){
+                if(match.status == "FINISHED"){
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
@@ -107,31 +101,31 @@ fun MatchItem(
                         text = match.score.fullTime.home.toString(),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
-                                .padding(dimensionResource(R.dimen.smallSpacer)),
+                                .padding(dimensionResource(R.dimen.padding_small)),
                         )
                         Text(
                             color = MaterialTheme.colorScheme.onSecondary,
                             text = stringResource(R.string.score_spacer),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
-                                .padding(dimensionResource(R.dimen.smallSpacer)),
+                                .padding(dimensionResource(R.dimen.padding_small)),
                         )
                         Text(
                             color = MaterialTheme.colorScheme.onSecondary,
                         text = match.score.fullTime.away.toString(),
                             style = MaterialTheme.typography.headlineMedium,
                             modifier = Modifier
-                                .padding(dimensionResource(R.dimen.smallSpacer)),
+                                .padding(dimensionResource(R.dimen.padding_small)),
                         )
                     }
 
-                }else if(match.status.equals("POSTPONED")){
+                }else if(match.status == "POSTPONED"){
                     Text(
                         color = MaterialTheme.colorScheme.onSecondary,
                         text = match.status,
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier
-                            .padding(dimensionResource(R.dimen.smallSpacer)),
+                            .padding(dimensionResource(R.dimen.padding_small)),
                     )
 
                 }
@@ -141,7 +135,7 @@ fun MatchItem(
                         text = convertToBelgianTime(match.utcDate).split("T")[1].substring(0,5),
                         style = MaterialTheme.typography.labelLarge,
                         modifier = Modifier
-                            .padding(dimensionResource(R.dimen.smallSpacer)),
+                            .padding(dimensionResource(R.dimen.padding_small)),
                     )
                 }
 
@@ -150,7 +144,7 @@ fun MatchItem(
             Box(
                 modifier = modifier
                     .size(dimensionResource(R.dimen.box_size_medium))
-                    .padding(dimensionResource(R.dimen.smallSpacer)),
+                    .padding(dimensionResource(R.dimen.padding_small)),
             ){
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current).data(match.awayTeam.crest).crossfade(true).build(),
@@ -158,7 +152,7 @@ fun MatchItem(
                     imageLoader = imgLoader,
                     modifier = Modifier
                         .size(dimensionResource(R.dimen.box_size_medium))
-                        .padding(dimensionResource(R.dimen.smallSpacer)),
+                        .padding(dimensionResource(R.dimen.padding_small)),
                 )
             }
 

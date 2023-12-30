@@ -13,17 +13,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.strikescore.R
-import com.example.strikescore.model.Standings
-import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.StandingsItem
-import com.example.strikescore.ui.components.TeamItem
-import com.example.strikescore.ui.teamScreen.TeamApiState
-import com.example.strikescore.ui.teamScreen.TeamListState
-import com.example.strikescore.ui.teamScreen.TeamOverviewState
-import com.example.strikescore.ui.teamScreen.TeamOverviewViewModel
 import kotlinx.coroutines.launch
 
 /**
@@ -44,14 +36,7 @@ fun StandingsOverview(
     // use the ApiState
     val standingsApiState = standingsOverviewViewModel.standingsApiState
 
-    //use the workerstate
-    val workerState by standingsOverviewViewModel.wifiWorkerState.collectAsState()
     Column {
-//        when(workerState.workerInfo?.state){
-//            null -> Text("state unknown")
-//            else -> Text(workerState.workerInfo?.state!!.name)
-//        }
-
         Box(modifier = modifier) {
             when (standingsApiState) {
                 is StandingsApiState.Loading -> Text(stringResource(R.string.loading))

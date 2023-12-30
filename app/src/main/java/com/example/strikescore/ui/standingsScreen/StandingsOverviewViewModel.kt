@@ -32,7 +32,7 @@ class StandingsOverviewViewModel(private val standingsRepository: StandingsRepos
     * Note: uiState is a cold flow. Changes don't come in from above unless a
     * refresh is called...
     * */
-    private val _uiState = MutableStateFlow(StandingsOverviewState(/*TaskSampler.getAll()*/))
+    private val _uiState = MutableStateFlow(StandingsOverviewState())
     val uiState: StateFlow<StandingsOverviewState> = _uiState.asStateFlow()
 
     /*

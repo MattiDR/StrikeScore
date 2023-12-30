@@ -1,8 +1,6 @@
 package com.example.strikescore.network.standings
 
 import android.util.Log
-import com.example.strikescore.network.team.ApiTeam
-import com.example.strikescore.network.team.TeamApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.http.GET

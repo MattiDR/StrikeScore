@@ -3,10 +3,6 @@ package com.example.strikescore.ui.standingsScreen
 import androidx.work.WorkInfo
 import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
-import com.example.strikescore.ui.matchScreen.MatchApiState.Error
-import com.example.strikescore.ui.matchScreen.MatchApiState.Loading
-import com.example.strikescore.ui.matchScreen.MatchApiState.Success
-import java.text.FieldPosition
 
 /**
  * Represents the state for the standings overview screen.

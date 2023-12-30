@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PermanentDrawerSheet
 import androidx.compose.material3.PermanentNavigationDrawer
@@ -18,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.strikescore.ui.util.StrikeScoreNavigationType
@@ -27,7 +25,6 @@ import com.example.strikescore.R
 import com.example.strikescore.ui.components.NavigationDrawerContent
 import com.example.strikescore.ui.components.StrikeScoreAppAppBar
 import com.example.strikescore.ui.components.StrikeScoreNavigationRail
-import com.example.strikescore.ui.matchScreen.MatchOverview
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
 import com.example.strikescore.ui.navigation.navComponent
 
@@ -105,7 +102,6 @@ fun StrikeScoreApp(
     }else{
         Row {
             AnimatedVisibility(visible = navigationType == StrikeScoreNavigationType.NAVIGATION_RAIL) {
-                val navigationRailContentDescription = stringResource(R.string.navigation_rail)
                 StrikeScoreNavigationRail(
                     selectedDestination = navController.currentDestination,
                     onTabPressed = { node: String -> navController.navigate(node) },

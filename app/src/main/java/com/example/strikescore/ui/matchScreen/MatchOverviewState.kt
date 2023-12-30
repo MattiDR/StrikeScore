@@ -2,8 +2,9 @@ package com.example.strikescore.ui.matchScreen
 
 import androidx.work.WorkInfo
 import com.example.strikescore.model.Match
-import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
+import com.example.strikescore.network.match.FullTime
+import com.example.strikescore.network.match.Score
 
 /**
  * Represents the state of a match overview screen.
@@ -25,7 +26,7 @@ data class MatchOverviewState(
     val status: String = "",
     val matchday: Int = 0,
     val utcDate: String = "",
-//    val score: Score = Score(),
+    val score: Score = Score(FullTime(0,0)),
 
 
 

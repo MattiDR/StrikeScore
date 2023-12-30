@@ -1,8 +1,6 @@
 package com.example.strikescore.ui.matchScreen
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -17,7 +15,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -31,27 +28,14 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.strikescore.R
-import com.example.strikescore.model.FullTime
-import com.example.strikescore.model.Match
-import com.example.strikescore.model.Score
-import com.example.strikescore.model.Standings
-import com.example.strikescore.model.Team
 import com.example.strikescore.ui.components.DateItem
 import com.example.strikescore.ui.components.MatchItem
-import com.example.strikescore.ui.components.StandingsItem
 import com.example.strikescore.ui.components.generateDateItems
-import com.example.strikescore.ui.standingsScreen.StandingsApiState
-import com.example.strikescore.ui.standingsScreen.StandingsListState
-import com.example.strikescore.ui.standingsScreen.StandingsOverviewState
-import com.example.strikescore.ui.standingsScreen.StandingsOverviewViewModel
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.util.Calendar
 
 /**
  * Composable function representing the match overview screen.
@@ -70,9 +54,6 @@ fun MatchOverview(
 
     // use the ApiState
     val matchApiState = matchOverviewViewModel.matchApiState
-
-    //use the workerstate
-    val workerState by matchOverviewViewModel.wifiWorkerState.collectAsState()
 
     //scroll date to today
     val datePickerLazyListState = rememberLazyListState()
@@ -97,11 +78,6 @@ fun MatchOverview(
     }
 
     Column {
-//        when(workerState.workerInfo?.state){
-//            null -> Text("state unknown")
-//            else -> Text(workerState.workerInfo?.state!!.name)
-//        }
-
         DatePickerRow(
             dateItems = dateItems,
             selectedDate = selectedDateState.value,
@@ -125,12 +101,11 @@ fun MatchOverview(
 /**
  * Composable function representing the list of matches in the match overview screen.
  *
- * @param modifier Modifier for styling the [MatchListComponent] composable.
  * @param matchOverviewState [MatchOverviewState] containing information about the match overview screen state.
  * @param matchListState [MatchListState] containing the list of matches and related state.
  */
 @Composable
-fun MatchListComponent(modifier: Modifier = Modifier, matchOverviewState: MatchOverviewState, matchListState: MatchListState) {
+fun MatchListComponent(matchOverviewState: MatchOverviewState, matchListState: MatchListState) {
     val lazyListState = rememberLazyListState()
 
     if (matchListState.matchList.isNotEmpty()) {

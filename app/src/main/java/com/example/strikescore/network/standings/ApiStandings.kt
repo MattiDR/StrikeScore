@@ -1,7 +1,5 @@
 package com.example.strikescore.network.standings
 
-import com.example.strikescore.data.database.team.asDomainTeam
-import com.example.strikescore.data.database.team.DbTeam
 import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
 import com.example.strikescore.network.team.ApiTeam
