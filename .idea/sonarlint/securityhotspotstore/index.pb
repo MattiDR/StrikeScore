@@ -986,3 +986,13 @@ Happ/src/main/java/com/example/strikescore/network/team/TeamApiService.kt,5\2\5
 Kapp/src/main/java/com/example/strikescore/network/standings/ApiStandings.kt,f\7\f7e52c62f97cd0f3f074d3f8c3e23290a0efc3b5
 ‚
 Rapp/src/main/java/com/example/strikescore/network/standings/StandingsApiService.kt,2\5\258fce02387090f62bf97ff3efb7830b28dc9f98
+i
+9app/src/test/java/com/example/strikescore/MatchDaoTest.kt,1\c\1c7de9330046b22a38fc4cca6e23f91732c266ba
+u
+Eapp/src/androidTest/java/com/example/strikescore/MatchOverviewTest.kt,9\4\94d15ad813aacf3cb3508389e68beb14b05f3d8d
+q
+Aapp/src/androidTest/java/com/example/strikescore/MatchItemTest.kt,5\5\556ff0656fd9a3e6654cb1eb9bf776574c3dfde2
+€
+Papp/src/androidTest/java/com/example/strikescore/ui/navigation/NavigationTest.kt,a\c\acaac6593c2f2006c32670283c4f3fd80979303e
+r
+Bapp/src/androidTest/java/com/example/strikescore/NavigationTest.kt,0\7\07e06cd46e4dcdd19e613782cc9bf96ce8a7dbfd
