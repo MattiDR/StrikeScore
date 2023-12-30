@@ -17,7 +17,7 @@ import com.example.strikescore.ui.teamScreen.TeamOverview
  *
  */
 @Composable
-fun navComponent(
+fun NavComponent(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {

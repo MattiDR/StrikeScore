@@ -26,7 +26,7 @@ import com.example.strikescore.ui.components.NavigationDrawerContent
 import com.example.strikescore.ui.components.StrikeScoreAppAppBar
 import com.example.strikescore.ui.components.StrikeScoreNavigationRail
 import com.example.strikescore.ui.navigation.StrikeScoreOverviewScreen
-import com.example.strikescore.ui.navigation.navComponent
+import com.example.strikescore.ui.navigation.NavComponent
 
 /**
  * Composable function representing the main structure of the Strike Score application.
@@ -78,7 +78,7 @@ fun StrikeScoreApp(
                 // modifier = Modifier.padding(dimensionResource(id = R.dimen.drawer_width), 0.dp, 0.dp, 0.dp )
             ) { innerPadding ->
 
-                navComponent(
+                NavComponent(
                     navController = navController,
                     modifier = Modifier.padding(innerPadding),
                 )
@@ -97,7 +97,7 @@ fun StrikeScoreApp(
                 StrikeScoreBottomAppBar(goToTeams,goToMatches , goToStandings)
             }
         ) { innerPadding ->
-            navComponent(navController, modifier = Modifier.padding(innerPadding))
+            NavComponent(navController, modifier = Modifier.padding(innerPadding))
         }
     }else{
         Row {
@@ -110,7 +110,7 @@ fun StrikeScoreApp(
             Scaffold(
                 containerColor = Color.Transparent,
             ) { innerPadding ->
-                navComponent(navController, modifier = Modifier.padding(innerPadding))
+                NavComponent(navController, modifier = Modifier.padding(innerPadding))
             }
         }
     }
