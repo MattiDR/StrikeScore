@@ -83,11 +83,16 @@ fun makeStatusNotification(message: String, context: Context) {
     * It follows the same principles used in the camera screen composable
     * */
     // Show the notification
-    if (ActivityCompat.checkSelfPermission(
-            context,
-            Manifest.permission.POST_NOTIFICATIONS
-        ) != PackageManager.PERMISSION_GRANTED
-    )
+    if (ActivityCompat.checkSelfPermission(context,
+            Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+    ){
+        // here to request the missing permissions, and then overriding
+        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+        //                                          int[] grantResults)
+        // to handle the case where the user grants the permission. See the documentation
+        // for ActivityCompat#requestPermissions for more details.
+        return
+    }
 
     NotificationManagerCompat.from(context).notify(1, builder.build())
 }
