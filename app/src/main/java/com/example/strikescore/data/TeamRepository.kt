@@ -15,7 +15,7 @@ import com.example.strikescore.data.database.team.asDomainTeam
 import com.example.strikescore.model.Team
 import com.example.strikescore.network.team.TeamApiService
 import com.example.strikescore.network.team.asDomainObjects
-import com.example.strikescore.network.team.getTasksAsFlow
+import com.example.strikescore.network.team.getTeamsAsFlow
 import com.example.strikescore.workerUtils.WifiNotificationWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -175,7 +175,7 @@ class CachingTeamsRepository(private val teamDao: TeamDao, private val teamApiSe
 
         // Use coroutines to perform the actual API request for team data.
         try {
-            teamApiService.getTasksAsFlow().asDomainObjects().collect {
+            teamApiService.getTeamsAsFlow().asDomainObjects().collect {
                     value ->
                 for (team in value) {
                     Log.i("TEST", "refresh: $value")

@@ -36,6 +36,6 @@ fun MatchApiService.getMatchesAsFlow(date: String): Flow<List<ApiMatch>> = flow 
         emit(getMatches(date, date).matches)
     }
     catch(e: Exception){
-        Log.e("API", "getTasksAsFlow: "+e.stackTraceToString(), )
+        Log.e("API", "getMatchesAsFlow: "+e.stackTraceToString(), )
     }
 }

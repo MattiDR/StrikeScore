@@ -41,7 +41,7 @@ fun StandingsOverview(
             when (standingsApiState) {
                 is StandingsApiState.Loading -> Text(stringResource(R.string.loading))
                 is StandingsApiState.Error -> Text(stringResource(R.string.couldn_t_load))
-                is StandingsApiState.Success -> TaskListComponent(standingsOverviewState = standingsOverviewState, standingsListState = standingsListState)
+                is StandingsApiState.Success -> StandingsListComponent(standingsOverviewState = standingsOverviewState, standingsListState = standingsListState)
             }
         }
     }
@@ -49,12 +49,11 @@ fun StandingsOverview(
 /**
  * Composable function for displaying the list of standings.
  *
- * @param modifier Modifier for styling the composable.
  * @param standingsOverviewState State representing the overview of standings.
  * @param standingsListState State representing the list of standings.
  */
 @Composable
-fun TaskListComponent(modifier: Modifier = Modifier, standingsOverviewState: StandingsOverviewState, standingsListState: StandingsListState) {
+fun StandingsListComponent(standingsOverviewState: StandingsOverviewState, standingsListState: StandingsListState) {
     val lazyListState = rememberLazyListState()
     LazyColumn(state = lazyListState) {
         items(standingsListState.standingsList.size) {

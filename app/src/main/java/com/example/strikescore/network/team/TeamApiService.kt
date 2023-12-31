@@ -15,17 +15,17 @@ interface TeamApiService {
      * @return An [ApiResponseTeams] object containing a list of [ApiTeam] objects.
      */
     @GET("teams")
-    suspend fun getTasks(): ApiResponseTeams
+    suspend fun getTeams(): ApiResponseTeams
 }
 
 /**
- * Extension function to convert the result of [getTasks] to a [Flow] of [ApiTeam] objects.
+ * Extension function to convert the result of [getTeams] to a [Flow] of [ApiTeam] objects.
  *
  * @return A [Flow] emitting a list of [ApiTeam] objects.
  */
-fun TeamApiService.getTasksAsFlow(): Flow<List<ApiTeam>> = flow {
+fun TeamApiService.getTeamsAsFlow(): Flow<List<ApiTeam>> = flow {
     try {
-        emit(getTasks().teams)
+        emit(getTeams().teams)
     }
     catch(e: Exception){
         Log.e("API", "getTasksAsFlow: "+e.stackTraceToString(), )

@@ -41,7 +41,7 @@ fun TeamOverview(
             when (teamApiState) {
                 is TeamApiState.Loading -> Text(stringResource(R.string.loading))
                 is TeamApiState.Error -> Text(stringResource(R.string.couldn_t_load))
-                is TeamApiState.Success -> TaskListComponent(teamOverviewState = teamOverviewState, teamListState = teamListState)
+                is TeamApiState.Success -> TeamListComponent(teamOverviewState = teamOverviewState, teamListState = teamListState)
             }
         }
     }
@@ -55,7 +55,7 @@ fun TeamOverview(
  * @param teamListState The state of the team list.
  */
 @Composable
-fun TaskListComponent(teamOverviewState: TeamOverviewState, teamListState: TeamListState) {
+fun TeamListComponent(teamOverviewState: TeamOverviewState, teamListState: TeamListState) {
     val lazyListState = rememberLazyListState()
     LazyColumn(state = lazyListState) {
         items(teamListState.teamList.size) {

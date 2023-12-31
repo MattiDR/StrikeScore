@@ -29,6 +29,6 @@ fun StandingsApiService.getStandingsAsFlow(): Flow<List<ApiStandings>> = flow {
         emit(getStandings().standings[0].table)
     }
     catch(e: Exception){
-        Log.e("API", "getTasksAsFlow: "+e.stackTraceToString(), )
+        Log.e("API", "getMatchesAsFlow: "+e.stackTraceToString(), )
     }
 }

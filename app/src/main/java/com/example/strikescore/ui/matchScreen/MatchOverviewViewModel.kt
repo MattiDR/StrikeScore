@@ -67,7 +67,7 @@ class MatchOverviewViewModel(private val matchRepository: MatchRepository) : Vie
      * @param date The date for which matches are to be retrieved.
      */
     fun selectDate(date: String) {
-        getMatchTasks(date)
+        getMatches(date)
     }
 
 
@@ -80,7 +80,7 @@ class MatchOverviewViewModel(private val matchRepository: MatchRepository) : Vie
      *
      * @param date The date for retrieving matches.
      */
-    private fun getMatchTasks(date:String) {
+    private fun getMatches(date:String) {
         try {
             viewModelScope.launch { matchRepository.refresh(date) }
 

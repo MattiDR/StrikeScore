@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MatchDaoTest">
-        <State />
-      </entry>
       <entry key="NavigationTest">
         <State />
       </entry>
