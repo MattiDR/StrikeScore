@@ -33,7 +33,7 @@ class NavigationTest {
     @Test
     fun verifyStartDestination() {
         composeTestRule
-            .onAllNodesWithText("Teams")[0]
+            .onNodeWithTag("Screen_Teams")
             .assertIsDisplayed()
     }
 
@@ -43,7 +43,7 @@ class NavigationTest {
             .onNodeWithContentDescription("navigate to Matches", ignoreCase = true, useUnmergedTree = true)
             .performClick()
         composeTestRule
-            .onAllNodesWithText("Matches")[0]
+            .onNodeWithTag("Screen_Matches")
             .assertIsDisplayed()
     }
 
@@ -53,7 +53,7 @@ class NavigationTest {
             .onNodeWithContentDescription("navigate to Standings", ignoreCase = true, useUnmergedTree = true)
             .performClick()
         composeTestRule
-            .onAllNodesWithText("Standings")[0]
+            .onNodeWithTag("Screen_Standings")
             .assertIsDisplayed()
     }
 }
