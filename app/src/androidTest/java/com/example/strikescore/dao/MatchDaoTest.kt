@@ -76,4 +76,17 @@ class MatchDaoTest {
         }.first()
         assertEquals(FakeDataSource.matches[0], match)
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun DaoDelete_deleteMatchFromDb() = runBlocking{
+        FakeDataSource.matches.forEach {
+            matchDao.insert(it.asDbMatch())
+        }
+        matchDao.delete(FakeDataSource.matches[0].asDbMatch())
+        val matches = matchDao.getAllItems(date).map {
+            it.asDomainMatches()
+        }.first()
+        assertTrue(matches.containsAll(FakeDataSource.matches.filter { it.utcDate == date }.map { it }.drop(1)))
+    }
 }

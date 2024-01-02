@@ -4,11 +4,15 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.strikescore.data.database.StrikeScoreDb
+import com.example.strikescore.data.database.matches.asDbMatch
+import com.example.strikescore.data.database.matches.asDomainMatches
 import com.example.strikescore.data.database.standings.StandingsDao
 import com.example.strikescore.data.database.standings.asDbStandings
 import com.example.strikescore.data.database.standings.asDomainStandings
+import junit.framework.TestCase
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -63,6 +67,17 @@ class StandingsDaoTest {
         }
         val standings = standingsDao.getItem(1)
         assertEquals(FakeDataSource.standings[0], standings.first().asDomainStandings())
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun DaoDelete_deleteStandingsFromDb() = runBlocking{
+        FakeDataSource.standings.forEach {
+            standingsDao.insert(it.asDbStandings())
+        }
+        standingsDao.delete(FakeDataSource.standings[0].asDbStandings())
+        val standings = standingsDao.getAllItems()
+        assertEquals(FakeDataSource.standings.subList(1, FakeDataSource.standings.size), standings.first().asDomainStandings())
     }
 
 }

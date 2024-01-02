@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.strikescore.data.database.StrikeScoreDb
+import com.example.strikescore.data.database.matches.asDbMatch
+import com.example.strikescore.data.database.matches.asDomainMatches
 import com.example.strikescore.data.database.team.TeamDao
 import com.example.strikescore.data.database.team.asDbTeam
 import com.example.strikescore.data.database.team.asDomainTeam
@@ -71,5 +73,18 @@ class TeamDaoTest {
         }
         val team = teamDao.getItem(name).first().asDomainTeam()
         TestCase.assertEquals(FakeDataSource.teams.first { it.name == name }, team)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun DaoDelete_deleteTeamFromDb() = runBlocking{
+        FakeDataSource.teams.forEach {
+            teamDao.insert(it.asDbTeam())
+        }
+        teamDao.delete(FakeDataSource.teams[0].asDbTeam())
+        val teams = teamDao.getAllItems().map {
+            it.asDomainTeams()
+        }.first()
+        TestCase.assertEquals(FakeDataSource.teams.drop(1), teams)
     }
 }
