@@ -2,12 +2,10 @@ package com.example.strikescore.fake
 
 import androidx.work.WorkInfo
 import com.example.strikescore.data.TeamRepository
-import com.example.strikescore.data.database.team.asDomainTeams
 import com.example.strikescore.model.Team
 import com.example.strikescore.network.team.asDomainObjects
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import org.mockito.Mockito.mock
 
 class FakeTeamRepository : TeamRepository {
@@ -38,7 +36,7 @@ class FakeTeamRepository : TeamRepository {
     }
 
     override suspend fun refresh() {
-        //
+        TODO("Not yet implemented")
     }
 
     override var wifiWorkInfo: Flow<WorkInfo>

@@ -996,8 +996,6 @@ v
 Fapp/src/androidTest/java/com/example/strikescore/dao/FakeDataSource.kt,e\b\eb9d4b2e8f6fd0b674035853c97cabc232f00af8
 p
 @app/src/test/java/com/example/strikescore/fake/FakeDataSource.kt,4\2\42344ba9a386d80964054c8c579149eb7eaee565
-y
-Iapp/src/test/java/com/example/strikescore/repository/ApiTeamRepository.kt,4\8\485085e2d8b510f804114c5922e15505f138b720
 t
 Dapp/src/test/java/com/example/strikescore/fake/FakeTeamRepository.kt,1\4\14d07959d7e8e91abd540663acbc70cfbe982361
 t

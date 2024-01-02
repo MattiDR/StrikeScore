@@ -1,9 +1,5 @@
 package com.example.strikescore.fake
 
-import com.example.strikescore.model.FullTime
-import com.example.strikescore.model.Match
-import com.example.strikescore.model.Score
-import com.example.strikescore.model.Standings
 import com.example.strikescore.model.Team
 import com.example.strikescore.network.team.ApiTeam
 
