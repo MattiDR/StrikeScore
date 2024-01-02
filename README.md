@@ -22,6 +22,4 @@ StrikeScore is an application that provides information about the Premier League
 
 
 
----
-Made with the help of project TaskApp(les11).
----
+### Made with the help of project TaskApp(branch: les-11)
