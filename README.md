@@ -1,8 +1,8 @@
 # StrikeScore Repository
 
 ## Student Information
-- **Naam:** Matti
-- **Achternaam:** De Roos
+- **Name:** Matti
+- **Surname:** De Roos
 - **Groep:** G3A1
 
 ## About StrikeScore
