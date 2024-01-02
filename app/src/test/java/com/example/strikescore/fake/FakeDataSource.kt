@@ -28,6 +28,11 @@ object FakeDataSource {
            "ARS",
            "https://crests.football-data.org/1.svg",
        ),
+         ApiTeam(
+              "Aston Villa FC",
+              "AVL",
+              "https://crests.football-data.org/2.svg",
+         ),
        )
 
 }

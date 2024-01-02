@@ -8,8 +8,11 @@ import com.example.strikescore.network.team.asDomainObjects
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import org.mockito.Mockito.mock
 
 class FakeTeamRepository : TeamRepository {
+
+    private var _wifiWorkInfo: Flow<WorkInfo>? = null
 
     override fun getTeams(): Flow<List<Team>> {
         return flow {
@@ -35,10 +38,13 @@ class FakeTeamRepository : TeamRepository {
     }
 
     override suspend fun refresh() {
-        TODO("Not yet implemented")
+        //
     }
 
     override var wifiWorkInfo: Flow<WorkInfo>
-        get() = TODO("Not yet implemented")
-        set(value) {}
+        get() = _wifiWorkInfo ?:
+        flow{
+            emit(mock(WorkInfo::class.java))
+        }
+        set(value) { _wifiWorkInfo = value }
 }

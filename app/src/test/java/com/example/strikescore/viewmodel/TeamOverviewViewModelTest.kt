@@ -1,18 +1,21 @@
 package com.example.strikescore.viewmodel
 
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.strikescore.data.TeamRepository
 import com.example.strikescore.fake.FakeDataSource
 import com.example.strikescore.fake.FakeTeamRepository
 import com.example.strikescore.model.Team
 import com.example.strikescore.network.team.ApiTeam
+import com.example.strikescore.ui.teamScreen.TeamApiState
 import com.example.strikescore.ui.teamScreen.TeamOverviewState
 import com.example.strikescore.ui.teamScreen.TeamOverviewViewModel
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
@@ -31,39 +34,42 @@ import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 class TeamOverviewViewModelTest {
-
     private lateinit var viewModel: TeamOverviewViewModel
-//    private var teamRepository: TeamRepository = FakeTeamRepository(InstrumentationRegistry.getInstrumentation().targetContext.applicationContext)
-    private val testDispatcher = StandardTestDispatcher()
-    private val testScope = TestScope(testDispatcher)
+    private lateinit var apiState : TeamApiState
 
 
+    @get:Rule
+    val testDispatcher = TestDispatcherRule()
 
     @Before
-    fun setup() {
+    fun init(){
+        viewModel = TeamOverviewViewModel(
+            teamsRepository = FakeTeamRepository(),
+        )
+
+        apiState = viewModel.teamApiState
+        when(apiState){
+            is TeamApiState.Success -> return
+            else -> {throw  AssertionError()}
+        }
+    }
+
+    @Test
+    fun getTeamTest() = runTest {
+        Assert.assertEquals(FakeDataSource.teams, viewModel.uiListState.first().teamList)
+    }
+
+
+}
+
+class TestDispatcherRule(
+    val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(),
+) : TestWatcher() {
+    override fun starting(description: Description) {
         Dispatchers.setMain(testDispatcher)
     }
 
-    @After
-    fun tearDown() {
+    override fun finished(description: Description) {
         Dispatchers.resetMain()
     }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun `getActorDetails should update uiActorDetailsState and set ActorApiState to Success`() = testScope.runTest {
-//        viewModel = TeamOverviewViewModel(teamRepository)
-        // Your test logic here
-        val collectCompleted = CompletableDeferred<Unit>()
-        var teamOverviewViewUiState: TeamOverviewState? = null
-        val job = launch {
-            teamOverviewViewUiState = viewModel.uiState.value
-            collectCompleted.complete(Unit)
-        }
-        advanceUntilIdle()
-        assertEquals((teamOverviewViewUiState as TeamOverviewState), FakeDataSource.teams)
-        job.cancel()
-
-    }
-
 }

@@ -54,9 +54,6 @@ class TeamOverviewViewModel(private val teamsRepository: TeamRepository) : ViewM
 
         // initializes the uiListState
         getRepoTeams()
-        Log.i("vm inspection", "TeamOverviewViewModel init")
-
-
 
     }
 
