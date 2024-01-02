@@ -19,3 +19,9 @@ StrikeScore is an application that provides information about the Premier League
 ### Football-data API
 - **Documentation:** [Football-data API Documentation](https://www.football-data.org/documentation/quickstart)
 - **Max Calls:** 50 calls per minute
+
+
+
+---
+Made with the help of project TaskApp(les11).
+---
