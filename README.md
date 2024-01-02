@@ -16,14 +16,14 @@ StrikeScore is an application that provides information about the Premier League
 - **Match Schedules:** Find out when which teams are playing in the Premier League.
 - **League Standings:** Stay updated on the current standings of teams in the Premier League.
 
-### Football-data API
+## Football-data API
 - **Documentation:** [Football-data API Documentation](https://www.football-data.org/documentation/quickstart)
 - **Max Calls:** 50 calls per minute
 
-### KDoc
+## KDoc
 
 - KDoc link: https://mattidr.github.io/StrikeScore/
 
 
 
-### Made with the help of project TaskApp(branch: les-11)
+## Made with the help of project TaskApp(branch: les-11)
