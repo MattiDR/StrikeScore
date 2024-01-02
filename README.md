@@ -24,6 +24,3 @@ StrikeScore is an application that provides information about the Premier League
 
 - KDoc link: https://mattidr.github.io/StrikeScore/
 
-
-
-## Made with the help of project TaskApp(branch: les-11)
