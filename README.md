@@ -23,4 +23,5 @@ StrikeScore is an application that provides information about the Premier League
 ## KDoc
 
 - KDoc: https://mattidr.github.io/StrikeScore/
+- Or: docs folder
 
